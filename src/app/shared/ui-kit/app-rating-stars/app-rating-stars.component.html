@@ -1,0 +1,14 @@
+<ion-grid class="app-rating-stars" [class]="'app-rating-stars--' + size">
+  <ion-row class="ion-justify-content-center">
+    @for (star of stars; track star) {
+      <ion-col size="auto" class="app-rating-stars__col">
+        <ion-icon
+          [name]="isFilled(star) ? 'star' : 'star-outline'"
+          [class.app-rating-stars__icon--filled]="isFilled(star)"
+          class="app-rating-stars__icon"
+          (click)="onStarClick(star)"
+        ></ion-icon>
+      </ion-col>
+    }
+  </ion-row>
+</ion-grid>

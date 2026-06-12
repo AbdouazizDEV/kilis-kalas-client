@@ -1,0 +1,8 @@
+import { Routes } from '@angular/router';
+
+export const RIDE_HISTORY_ROUTES: Routes = [
+  {
+    path: '',
+    loadComponent: () => import('./pages/ride-history/ride-history.page').then((m) => m.RideHistoryPage),
+  },
+];

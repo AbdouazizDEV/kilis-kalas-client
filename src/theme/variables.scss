@@ -1,0 +1,58 @@
+// Kilis-Kalas — Design tokens & Ionic theme overrides
+
+:root {
+  --kk-primary: #1abc9c;
+  --kk-primary-shade: #17a589;
+  --kk-primary-tint: #31c3a6;
+  --kk-secondary: #2c3e50;
+  --kk-accent: #f39c12;
+  --kk-danger: #e74c3c;
+  --kk-success: #27ae60;
+  --kk-light-bg: #f5f7fa;
+  --kk-dark-bg: #1a1a2e;
+  --kk-surface-dark: #16213e;
+  --kk-text-light: #ffffff;
+  --kk-text-dark: #2c3e50;
+  --kk-text-muted: #7f8c8d;
+  --kk-border-radius: 12px;
+  --kk-spacing-xs: 2%;
+  --kk-spacing-sm: 4%;
+  --kk-spacing-md: 6%;
+  --kk-spacing-lg: 8%;
+  --kk-spacing-xl: 12%;
+
+  --ion-color-primary: #1abc9c;
+  --ion-color-primary-rgb: 26, 188, 156;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #17a589;
+  --ion-color-primary-tint: #31c3a6;
+
+  --ion-color-secondary: #2c3e50;
+  --ion-color-secondary-rgb: 44, 62, 80;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #273746;
+  --ion-color-secondary-tint: #415162;
+
+  --ion-color-tertiary: #f39c12;
+  --ion-color-tertiary-rgb: 243, 156, 18;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #d68910;
+  --ion-color-tertiary-tint: #f4a62a;
+
+  --ion-background-color: var(--kk-light-bg);
+  --ion-text-color: var(--kk-text-dark);
+  --ion-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: var(--kk-dark-bg);
+    --ion-text-color: var(--kk-text-light);
+    --ion-card-background: var(--kk-surface-dark);
+    --ion-item-background: var(--kk-surface-dark);
+    --ion-toolbar-background: var(--kk-surface-dark);
+  }
+}

@@ -1,0 +1,19 @@
+<ion-modal
+  [isOpen]="isOpen"
+  [breakpoints]="breakpoints"
+  [initialBreakpoint]="initialBreakpoint"
+  [backdropDismiss]="true"
+  class="app-bottom-sheet"
+  (didDismiss)="onDismiss()"
+>
+  @if (title) {
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>{{ title }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  }
+  <ion-content class="app-bottom-sheet__content">
+    <ng-content></ng-content>
+  </ion-content>
+</ion-modal>

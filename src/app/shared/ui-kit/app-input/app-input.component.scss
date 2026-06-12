@@ -1,0 +1,19 @@
+.app-input {
+  --background: var(--ion-card-background, #ffffff);
+  --border-radius: var(--kk-border-radius);
+  --padding-start: 4%;
+  --padding-end: 4%;
+  margin-bottom: 2%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--kk-border-radius);
+
+  &--error {
+    border-color: var(--kk-danger);
+  }
+}
+
+.app-input__error {
+  display: block;
+  padding: 0 4% 2%;
+  font-size: 85%;
+}

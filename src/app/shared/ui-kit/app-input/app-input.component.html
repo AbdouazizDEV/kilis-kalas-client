@@ -1,0 +1,16 @@
+<ion-item class="app-input" [class.app-input--error]="!!errorMessage" lines="none">
+  @if (label) {
+    <ion-label position="stacked">{{ label }}</ion-label>
+  }
+  <ion-input
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (ionInput)="onInput($event)"
+    (ionBlur)="onBlur()"
+  ></ion-input>
+</ion-item>
+@if (errorMessage) {
+  <ion-note color="danger" class="app-input__error">{{ errorMessage }}</ion-note>
+}

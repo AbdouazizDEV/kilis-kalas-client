@@ -1,0 +1,13 @@
+.app-card {
+  --background: var(--ion-card-background, #ffffff);
+  border-radius: var(--kk-border-radius);
+  margin: 4% 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.app-card__content--no-padding {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}

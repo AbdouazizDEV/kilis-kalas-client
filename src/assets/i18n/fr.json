@@ -1,0 +1,17 @@
+{
+  "ONBOARDING": {
+    "SPLASH": {
+      "TAGLINE": "Votre mobilité à Bambey"
+    },
+    "WELCOME": {
+      "TITLE": "Bienvenue sur Kilis Kalas",
+      "SUBTITLE": "Réservez votre course en quelques secondes à Bambey",
+      "GOOGLE": "Continuer avec Google",
+      "PHONE": "Continuer avec le téléphone",
+      "TERMS": "En continuant, vous acceptez nos conditions d'utilisation"
+    }
+  },
+  "COMMON": {
+    "LOADING": "Chargement..."
+  }
+}

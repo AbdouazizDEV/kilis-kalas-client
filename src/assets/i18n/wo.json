@@ -1,0 +1,17 @@
+{
+  "ONBOARDING": {
+    "SPLASH": {
+      "TAGLINE": "Sa mobilite ci Bambey"
+    },
+    "WELCOME": {
+      "TITLE": "Dalal jamm ci Kilis Kalas",
+      "SUBTITLE": "Defal sa wotu ci ay tànk yu néew ci Bambey",
+      "GOOGLE": "Kontine ak Google",
+      "PHONE": "Kontine ak telefon",
+      "TERMS": "Su dee kontine, nangu nga sunu conditions yi"
+    }
+  },
+  "COMMON": {
+    "LOADING": "Mi ngi yor..."
+  }
+}

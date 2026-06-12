@@ -1,0 +1,15 @@
+<ion-button
+  [expand]="expand"
+  [fill]="fill"
+  [color]="color"
+  [disabled]="disabled || loading"
+  class="app-button"
+  (click)="onClick()"
+>
+  @if (loading) {
+    <ion-spinner name="crescent" slot="start"></ion-spinner>
+  } @else if (icon) {
+    <ion-icon [name]="icon" [slot]="iconSlot"></ion-icon>
+  }
+  <ng-content></ng-content>
+</ion-button>

@@ -1,0 +1,28 @@
+.app-rating-stars {
+  padding: 0;
+
+  &__col {
+    padding: 0 1%;
+  }
+
+  &__icon {
+    color: var(--kk-text-muted);
+    cursor: pointer;
+
+    &--filled {
+      color: var(--kk-accent);
+    }
+  }
+
+  &--sm .app-rating-stars__icon {
+    font-size: 120%;
+  }
+
+  &--md .app-rating-stars__icon {
+    font-size: 160%;
+  }
+
+  &--lg .app-rating-stars__icon {
+    font-size: 200%;
+  }
+}

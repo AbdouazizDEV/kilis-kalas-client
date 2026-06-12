@@ -1,0 +1,7 @@
+{
+  "name": "kilis-kalas-passenger",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

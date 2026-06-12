@@ -1,0 +1,19 @@
+<ion-grid class="app-map-view">
+  <ion-row class="ion-align-items-center ion-justify-content-center app-map-view__row">
+  @if (loading) {
+    <ion-col size="12" class="ion-text-center">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </ion-col>
+  } @else {
+    <ion-col size="12" class="ion-text-center">
+      <ion-icon name="map-outline" class="app-map-view__icon"></ion-icon>
+      <ion-text class="app-map-view__label">{{ placeholder }}</ion-text>
+      @if (center) {
+        <ion-text class="app-map-view__coords">
+          {{ center.latitude | number: '1.4-4' }}, {{ center.longitude | number: '1.4-4' }}
+        </ion-text>
+      }
+    </ion-col>
+  }
+  </ion-row>
+</ion-grid>

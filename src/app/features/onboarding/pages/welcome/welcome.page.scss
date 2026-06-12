@@ -1,0 +1,68 @@
+.welcome {
+  --background: var(--ion-background-color);
+
+  &__grid {
+    height: 100%;
+    padding: 0;
+  }
+
+  &__hero-row {
+    height: 45%;
+    min-height: 200px;
+  }
+
+  &__hero {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content-row {
+    padding: 6% 6% 8%;
+  }
+
+  &__content {
+    margin: 0 auto;
+  }
+
+  &__title {
+    display: block;
+    font-size: 180%;
+    font-weight: 700;
+    color: var(--ion-text-color);
+    margin-bottom: 3%;
+    line-height: 1.3;
+  }
+
+  &__subtitle {
+    display: block;
+    font-size: 100%;
+    color: var(--kk-text-muted);
+    margin-bottom: 8%;
+    line-height: 1.5;
+  }
+
+  &__actions {
+    padding: 0;
+    margin-bottom: 6%;
+  }
+
+  &__terms {
+    display: block;
+    font-size: 80%;
+    color: var(--kk-text-muted);
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 4%;
+  }
+}
+
+@media (min-width: 768px) {
+  .welcome__hero-row {
+    height: 50%;
+  }
+
+  .welcome__content-row {
+    padding: 4% 12% 6%;
+  }
+}

@@ -1,0 +1,9 @@
+<ion-avatar [class]="'app-avatar app-avatar--' + size">
+  @if (src) {
+    <ion-img [src]="src" alt="avatar"></ion-img>
+  } @else if (initials) {
+    <ion-text class="app-avatar__initials">{{ initials }}</ion-text>
+  } @else {
+    <ion-icon name="person-circle-outline"></ion-icon>
+  }
+</ion-avatar>

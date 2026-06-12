@@ -1,0 +1,39 @@
+<ion-content [fullscreen]="true" class="welcome">
+  <ion-grid class="welcome__grid">
+    <ion-row class="welcome__hero-row">
+      <ion-col size="12">
+        <ion-img
+          src="assets/images/welcome-hero.svg"
+          alt="Bienvenue Kilis Kalas"
+          class="welcome__hero"
+        ></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="welcome__content-row">
+      <ion-col size="12" sizeMd="10" sizeLg="8" class="welcome__content">
+        <ion-text class="welcome__title">{{ 'ONBOARDING.WELCOME.TITLE' | translate }}</ion-text>
+        <ion-text class="welcome__subtitle">{{ 'ONBOARDING.WELCOME.SUBTITLE' | translate }}</ion-text>
+
+        <ion-grid class="welcome__actions">
+          <ion-row>
+            <ion-col size="12">
+              <app-button variant="primary" icon="logo-google" (buttonClick)="onGoogleLogin()">
+                {{ 'ONBOARDING.WELCOME.GOOGLE' | translate }}
+              </app-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <app-button variant="outline" icon="call-outline" (buttonClick)="onPhoneLogin()">
+                {{ 'ONBOARDING.WELCOME.PHONE' | translate }}
+              </app-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-text class="welcome__terms">{{ 'ONBOARDING.WELCOME.TERMS' | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

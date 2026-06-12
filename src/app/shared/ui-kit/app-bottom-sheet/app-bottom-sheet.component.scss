@@ -1,0 +1,11 @@
+.app-bottom-sheet {
+  --border-radius: var(--kk-border-radius) var(--kk-border-radius) 0 0;
+  --box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.app-bottom-sheet__content {
+  --padding-start: 6%;
+  --padding-end: 6%;
+  --padding-top: 4%;
+  --padding-bottom: 6%;
+}
