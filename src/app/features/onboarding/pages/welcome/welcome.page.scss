@@ -1,68 +1,160 @@
+// Référence maquette : 375 × 812 — toutes les mesures en %
 .welcome {
-  --background: var(--ion-background-color);
+  --welcome-pad-x: 6.4%;
+  --welcome-content-w: 89.33%;
+  --welcome-hero-w: 97.38%;
+  --welcome-hero-h: 51.97%;
+  --welcome-title-size: 150%;
+  --welcome-title-lh: 158%;
+  --welcome-desc-size: 81.25%;
+  --welcome-desc-lh: 162%;
+  --welcome-text-gap: 2.22%;
+  --welcome-footer-pad-top: 4%;
+  --welcome-footer-pad-bottom: 6.03%;
 
-  &__grid {
+  --background: var(--kk-brand-bg, #f9f9f9);
+  font-size: 100%;
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
+    width: 100%;
+    padding: 2% var(--welcome-pad-x) var(--welcome-footer-pad-bottom);
+    box-sizing: border-box;
+  }
+
+  &__decoration-row {
+    flex: 0 0 11.58%;
+    width: 94.01%;
+    align-self: flex-start;
+    margin-left: -0.27%;
+  }
+
+  &__decoration-col {
+    position: relative;
+    height: 100%;
+    width: 100%;
     padding: 0;
   }
 
+  &__route {
+    width: 86%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  &__scooter {
+    position: absolute;
+    right: 2%;
+    top: 12%;
+    width: 6.4%;
+    height: 25.5%;
+    color: var(--kk-brand-green, #10b981);
+    transform: rotate(21.33deg);
+  }
+
   &__hero-row {
-    height: 45%;
-    min-height: 200px;
+    flex: 0 0 var(--welcome-hero-h);
+    width: var(--welcome-hero-w);
+    margin-top: 1%;
+  }
+
+  &__hero-col {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   &__hero {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center top;
   }
 
-  &__content-row {
-    padding: 6% 6% 8%;
+  &__text-row {
+    flex: 0 0 auto;
+    width: var(--welcome-content-w);
+    margin-top: 2.22%;
   }
 
-  &__content {
-    margin: 0 auto;
+  &__text-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--welcome-text-gap);
+    width: 100%;
+    padding: 0;
   }
 
   &__title {
     display: block;
-    font-size: 180%;
-    font-weight: 700;
-    color: var(--ion-text-color);
-    margin-bottom: 3%;
-    line-height: 1.3;
+    white-space: normal;
+    width: 100%;
+    font-family: var(--kk-font-body);
+    font-weight: 500;
+    font-size: var(--welcome-title-size);
+    line-height: var(--welcome-title-lh);
+    color: #000000;
+    margin: 0;
   }
 
-  &__subtitle {
+  &__title ion-text {
+    display: inline;
+  }
+
+  &__title-highlight {
+    color: var(--kk-brand-green, #10b981);
+    font-weight: 500;
+  }
+
+  &__description {
     display: block;
-    font-size: 100%;
-    color: var(--kk-text-muted);
-    margin-bottom: 8%;
-    line-height: 1.5;
+    width: 100%;
+    font-family: var(--kk-font-body);
+    font-weight: 300;
+    font-size: var(--welcome-desc-size);
+    line-height: var(--welcome-desc-lh);
+    color: #000000;
   }
 
-  &__actions {
+  &__footer-row {
+    flex: 0 0 auto;
+    width: var(--welcome-content-w);
+    margin-top: auto;
+    padding-top: var(--welcome-footer-pad-top);
+  }
+
+  &__footer-col {
+    width: 100%;
     padding: 0;
-    margin-bottom: 6%;
-  }
-
-  &__terms {
-    display: block;
-    font-size: 80%;
-    color: var(--kk-text-muted);
-    text-align: center;
-    line-height: 1.4;
-    padding: 0 4%;
   }
 }
 
 @media (min-width: 768px) {
-  .welcome__hero-row {
-    height: 50%;
+  .welcome {
+    --welcome-pad-x: 8%;
+    --welcome-content-w: 72%;
+    --welcome-hero-w: 78%;
+    --welcome-hero-h: 48%;
+    --welcome-title-size: 175%;
+    --welcome-desc-size: 93.75%;
+    font-size: 112.5%;
   }
+}
 
-  .welcome__content-row {
-    padding: 4% 12% 6%;
+@media (min-width: 1024px) {
+  .welcome {
+    --welcome-content-w: 56%;
+    --welcome-hero-w: 62%;
+    --welcome-hero-h: 46%;
+    font-size: 125%;
   }
 }

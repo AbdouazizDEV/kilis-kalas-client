@@ -1,14 +1,16 @@
 // Kilis-Kalas — Design tokens & Ionic theme overrides
 
 :root {
-  --kk-primary: #1abc9c;
-  --kk-primary-shade: #17a589;
-  --kk-primary-tint: #31c3a6;
+  --kk-brand-green: #10b981;
+  --kk-brand-bg: #f9f9f9;
+  --kk-primary: #10b981;
+  --kk-primary-shade: #0ea572;
+  --kk-primary-tint: #34d399;
   --kk-secondary: #2c3e50;
   --kk-accent: #f39c12;
   --kk-danger: #e74c3c;
   --kk-success: #27ae60;
-  --kk-light-bg: #f5f7fa;
+  --kk-light-bg: #f9f9f9;
   --kk-dark-bg: #1a1a2e;
   --kk-surface-dark: #16213e;
   --kk-text-light: #ffffff;
@@ -44,7 +46,9 @@
 
   --ion-background-color: var(--kk-light-bg);
   --ion-text-color: var(--kk-text-dark);
-  --ion-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ion-font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  --kk-font-display: 'Kalam', cursive;
+  --kk-font-body: 'Outfit', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

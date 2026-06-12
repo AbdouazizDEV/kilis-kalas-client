@@ -1,0 +1,11 @@
+<ion-button
+  class="app-pill-button"
+  [expand]="expand"
+  [disabled]="disabled || loading"
+  (click)="onClick()"
+>
+  @if (loading) {
+    <ion-spinner name="crescent" slot="start"></ion-spinner>
+  }
+  <ng-content></ng-content>
+</ion-button>

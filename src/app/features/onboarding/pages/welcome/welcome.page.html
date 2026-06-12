@@ -1,38 +1,51 @@
-<ion-content [fullscreen]="true" class="welcome">
-  <ion-grid class="welcome__grid">
-    <ion-row class="welcome__hero-row">
-      <ion-col size="12">
+<ion-content [fullscreen]="true" class="welcome" [scrollY]="false">
+  <ion-grid class="welcome__layout">
+   <!--  <ion-row class="welcome__decoration-row">
+      <ion-col size="12" class="welcome__decoration-col">
         <ion-img
-          src="assets/images/welcome-hero.svg"
-          alt="Bienvenue Kilis Kalas"
+          src="assets/images/welcome-route.svg"
+          alt=""
+          class="welcome__route"
+        ></ion-img>
+        <ion-icon name="bicycle-outline" class="welcome__scooter" aria-hidden="true"></ion-icon>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row class="welcome__hero-row ion-align-items-center ion-justify-content-center">
+      <ion-col size="12" class="welcome__hero-col">
+        <ion-img
+          src="assets/images/vector-27.png"
+          alt="Passagère Kilis Kalas"
           class="welcome__hero"
         ></ion-img>
       </ion-col>
     </ion-row>
 
-    <ion-row class="welcome__content-row">
-      <ion-col size="12" sizeMd="10" sizeLg="8" class="welcome__content">
-        <ion-text class="welcome__title">{{ 'ONBOARDING.WELCOME.TITLE' | translate }}</ion-text>
-        <ion-text class="welcome__subtitle">{{ 'ONBOARDING.WELCOME.SUBTITLE' | translate }}</ion-text>
+    <ion-row class="welcome__text-row">
+      <ion-col size="12" class="welcome__text-col">
+        <ion-label class="welcome__title">
+          <ion-text>{{ 'ONBOARDING.WELCOME.TITLE_PART1' | translate }}</ion-text>
+          <ion-text class="welcome__title-highlight">{{
+            'ONBOARDING.WELCOME.TITLE_HIGHLIGHT1' | translate
+          }}</ion-text>
+          <ion-text>{{ 'ONBOARDING.WELCOME.TITLE_PART2' | translate }}</ion-text>
+          <ion-text class="welcome__title-highlight">{{
+            'ONBOARDING.WELCOME.TITLE_HIGHLIGHT2' | translate
+          }}</ion-text>
+          <ion-text>{{ 'ONBOARDING.WELCOME.TITLE_PART3' | translate }}</ion-text>
+        </ion-label>
 
-        <ion-grid class="welcome__actions">
-          <ion-row>
-            <ion-col size="12">
-              <app-button variant="primary" icon="logo-google" (buttonClick)="onGoogleLogin()">
-                {{ 'ONBOARDING.WELCOME.GOOGLE' | translate }}
-              </app-button>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size="12">
-              <app-button variant="outline" icon="call-outline" (buttonClick)="onPhoneLogin()">
-                {{ 'ONBOARDING.WELCOME.PHONE' | translate }}
-              </app-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <ion-text class="welcome__description">{{
+          'ONBOARDING.WELCOME.DESCRIPTION' | translate
+        }}</ion-text>
+      </ion-col>
+    </ion-row>
 
-        <ion-text class="welcome__terms">{{ 'ONBOARDING.WELCOME.TERMS' | translate }}</ion-text>
+    <ion-row class="welcome__footer-row">
+      <ion-col size="12" class="welcome__footer-col">
+        <app-pill-button (buttonClick)="onStart()">
+          {{ 'ONBOARDING.WELCOME.CTA' | translate }}
+        </app-pill-button>
       </ion-col>
     </ion-row>
   </ion-grid>

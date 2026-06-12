@@ -1,0 +1,23 @@
+.app-pill-button {
+  --background: var(--kk-brand-green, #10b981);
+  --background-activated: #0ea572;
+  --background-hover: #0ea572;
+  --background-focused: #0ea572;
+  --border-radius: 12px;
+  --box-shadow: none;
+  --color: #000000;
+  --padding-top: 5.73%;
+  --padding-bottom: 4.73%;
+  --padding-start: 6%;
+  --padding-end: 6%;
+
+  width: 100%;
+  height: auto;
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 107.75%;
+  line-height: 140%;
+  letter-spacing: 0;
+  text-transform: none;
+}

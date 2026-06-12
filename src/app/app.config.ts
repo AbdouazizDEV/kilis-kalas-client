@@ -24,8 +24,14 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicStorageModule.forRoot()),
-    ...provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
-    ...provideTranslateService({ lang: 'fr', fallbackLang: 'fr' }),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/assets/i18n/',
+        suffix: '.json',
+      }),
+      lang: 'fr',
+      fallbackLang: 'fr',
+    }),
     { provide: AUTH_SERVICE, useClass: AuthService },
     { provide: RIDE_REPOSITORY, useClass: RideRepository },
     { provide: USER_REPOSITORY, useClass: UserRepository },

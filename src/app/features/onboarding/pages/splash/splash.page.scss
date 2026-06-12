@@ -1,54 +1,70 @@
+// Référence maquette : 375 × 812 — toutes les mesures en %
 .splash {
-  --background: linear-gradient(180deg, #22b89a 0%, #1a9e84 45%, #148f77 100%);
+  --splash-logo-w: 59.73%;
+  --splash-home-bar-h: 4.19%;
+  --splash-home-bar-w: 35.73%;
+  --splash-home-bar-pill-h: 0.62%;
+  --splash-home-bar-pill-radius: 37.5%;
+
+  --background: var(--kk-brand-green, #10b981);
 
   &__grid {
+    position: relative;
+    display: block;
     height: 100%;
+    width: 100%;
     padding: 0;
   }
 
   &__row {
-    height: 100%;
+    height: 95.81%;
   }
 
   &__col {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
   }
 
   &__logo {
-    width: 42%;
-    max-width: 220px;
-    min-width: 140px;
+    width: var(--splash-logo-w);
+    height: auto;
     margin: 0 auto;
-    border-radius: 22%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    animation: splash-logo-in 0.8s ease-out forwards;
-  }
-}
-
-@keyframes splash-logo-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.85);
+    object-fit: contain;
   }
 
-  100% {
-    opacity: 1;
-    transform: scale(1);
+  &__home-bar-row {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--splash-home-bar-h);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1.6%;
+  }
+
+  &__home-bar {
+    display: inline-block;
+    width: var(--splash-home-bar-w);
+    height: var(--splash-home-bar-pill-h);
+    background: #000000;
+    border-radius: var(--splash-home-bar-pill-radius);
   }
 }
 
 @media (min-width: 768px) {
-  .splash__logo {
-    width: 28%;
-    max-width: 280px;
+  .splash {
+    --splash-logo-w: 32%;
   }
 }
 
 @media (min-width: 1024px) {
-  .splash__logo {
-    width: 22%;
-    max-width: 320px;
+  .splash {
+    --splash-logo-w: 24%;
   }
 }

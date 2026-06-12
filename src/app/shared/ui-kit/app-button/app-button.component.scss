@@ -1,7 +1,8 @@
 .app-button {
   --border-radius: var(--kk-border-radius);
-  height: 7%;
-  min-height: 48px;
+  height: auto;
+  --padding-top: 3.5%;
+  --padding-bottom: 3.5%;
   font-weight: 600;
   text-transform: none;
   letter-spacing: 0.02em;

@@ -1,11 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonCol, IonContent, IonGrid, IonImg, IonRow } from '@ionic/angular/standalone';
+import { IonCol, IonContent, IonGrid, IonImg, IonRow, IonText } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-splash',
   standalone: true,
-  imports: [IonContent, IonGrid, IonRow, IonCol, IonImg],
+  imports: [IonContent, IonGrid, IonRow, IonCol, IonImg, IonText],
   templateUrl: './splash.page.html',
   styleUrls: ['./splash.page.scss'],
 })

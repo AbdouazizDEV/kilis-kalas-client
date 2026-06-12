@@ -4,14 +4,18 @@
       "TAGLINE": "Sa mobilite ci Bambey"
     },
     "WELCOME": {
-      "TITLE": "Dalal jamm ci Kilis Kalas",
-      "SUBTITLE": "Defal sa wotu ci ay tànk yu néew ci Bambey",
-      "GOOGLE": "Kontine ak Google",
-      "PHONE": "Kontine ak telefon",
-      "TERMS": "Su dee kontine, nangu nga sunu conditions yi"
+      "TITLE_PART1": "Sa wotu ",
+      "TITLE_HIGHLIGHT1": "bu baax",
+      "TITLE_PART2": ", ci sa ",
+      "TITLE_HIGHLIGHT2": "loxo",
+      "TITLE_PART3": ".",
+      "DESCRIPTION": "Kilis Kalas daf lay may nga def sa wotu ci Bambey ci ay tànk yu néew.",
+      "CTA": "Tambali"
     }
   },
   "COMMON": {
-    "LOADING": "Mi ngi yor..."
+    "LOADING": "Mi ngi yor...",
+    "CONTINUE": "Kontine",
+    "LOGIN": "Dugg"
   }
 }

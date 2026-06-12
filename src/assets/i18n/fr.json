@@ -4,14 +4,18 @@
       "TAGLINE": "Votre mobilité à Bambey"
     },
     "WELCOME": {
-      "TITLE": "Bienvenue sur Kilis Kalas",
-      "SUBTITLE": "Réservez votre course en quelques secondes à Bambey",
-      "GOOGLE": "Continuer avec Google",
-      "PHONE": "Continuer avec le téléphone",
-      "TERMS": "En continuant, vous acceptez nos conditions d'utilisation"
+      "TITLE_PART1": "Votre trajet ",
+      "TITLE_HIGHLIGHT1": "idéal",
+      "TITLE_PART2": ", au bout des ",
+      "TITLE_HIGHLIGHT2": "doigts",
+      "TITLE_PART3": ".",
+      "DESCRIPTION": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been",
+      "CTA": "Commençons"
     }
   },
   "COMMON": {
-    "LOADING": "Chargement..."
+    "LOADING": "Chargement...",
+    "CONTINUE": "Continuer",
+    "LOGIN": "Se connecter"
   }
 }

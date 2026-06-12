@@ -4,12 +4,16 @@ import {
   IonCol,
   IonContent,
   IonGrid,
+  IonIcon,
   IonImg,
+  IonLabel,
   IonRow,
   IonText,
 } from '@ionic/angular/standalone';
 import { TranslatePipe } from '@ngx-translate/core';
-import { AppButtonComponent } from '../../../../shared/ui-kit/app-button/app-button.component';
+import { addIcons } from 'ionicons';
+import { bicycleOutline } from 'ionicons/icons';
+import { AppPillButtonComponent } from '../../../../shared/ui-kit/app-pill-button/app-pill-button.component';
 
 @Component({
   selector: 'app-welcome',
@@ -20,9 +24,11 @@ import { AppButtonComponent } from '../../../../shared/ui-kit/app-button/app-but
     IonRow,
     IonCol,
     IonImg,
+    IonIcon,
+    IonLabel,
     IonText,
     TranslatePipe,
-    AppButtonComponent,
+    AppPillButtonComponent,
   ],
   templateUrl: './welcome.page.html',
   styleUrls: ['./welcome.page.scss'],
@@ -30,11 +36,11 @@ import { AppButtonComponent } from '../../../../shared/ui-kit/app-button/app-but
 export class WelcomePage {
   private readonly router = inject(Router);
 
-  onGoogleLogin(): void {
-    this.router.navigate(['/auth/login']);
+  constructor() {
+    addIcons({ bicycleOutline });
   }
 
-  onPhoneLogin(): void {
+  onStart(): void {
     this.router.navigate(['/auth/login']);
   }
 }
