@@ -12,8 +12,35 @@ export const routes: Routes = [
       import('./features/onboarding/onboarding.routes').then((m) => m.ONBOARDING_ROUTES),
   },
   {
+    path: 'auth/login',
+    loadComponent: () =>
+      import('./features/auth/pages/login/login.page').then((m) => m.LoginPage),
+  },
+  {
+    path: 'auth/register',
+    loadComponent: () =>
+      import('./features/auth/pages/register/register.page').then((m) => m.RegisterPage),
+  },
+  {
+    path: 'auth/otp',
+    loadComponent: () => import('./features/auth/pages/otp/otp.page').then((m) => m.OtpPage),
+  },
+  {
+    path: 'auth/new-password',
+    loadComponent: () =>
+      import('./features/auth/pages/new-password/new-password.page').then((m) => m.NewPasswordPage),
+  },
+  {
+    path: 'auth/forgot-password',
+    loadComponent: () =>
+      import('./features/auth/pages/forgot-password/forgot-password.page').then(
+        (m) => m.ForgotPasswordPage,
+      ),
+  },
+  {
     path: 'auth',
-    loadChildren: () => import('./features/auth/auth.routes').then((m) => m.AUTH_ROUTES),
+    redirectTo: 'auth/login',
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -45,5 +72,9 @@ export const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./features/profile/profile.routes').then((m) => m.PROFILE_ROUTES),
+  },
+  {
+    path: '**',
+    redirectTo: 'onboarding/splash',
   },
 ];

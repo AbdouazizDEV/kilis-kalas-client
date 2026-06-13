@@ -1,0 +1,19 @@
+@import '../../../../shared/ui-kit/auth-page/auth-page';
+
+.otp-page {
+  --auth-action-top: 10.47%;
+
+  .auth-page__subtitle {
+    font-weight: 300;
+  }
+
+  &__input-row {
+    flex: 0 0 auto;
+    width: var(--auth-content-w);
+  }
+
+  &__input-col {
+    padding: 0;
+    width: 100%;
+  }
+}

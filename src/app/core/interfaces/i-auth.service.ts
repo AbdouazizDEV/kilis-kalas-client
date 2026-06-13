@@ -1,10 +1,11 @@
 import { Observable } from 'rxjs';
-import { AuthResult, LoginCredentials, RegisterData } from '../../models/auth.model';
+import { AuthResult, LoginCredentials, RegisterData, ResetPasswordData } from '../../models/auth.model';
 
 export interface IAuthService {
   login(credentials: LoginCredentials): Observable<AuthResult>;
   register(data: RegisterData): Observable<AuthResult>;
   verifyOtp(phone: string, code: string): Observable<AuthResult>;
-  forgotPassword(email: string): Observable<void>;
+  forgotPassword(identifier: string): Observable<void>;
+  resetPassword(data: ResetPasswordData): Observable<AuthResult>;
   logout(): Observable<void>;
 }

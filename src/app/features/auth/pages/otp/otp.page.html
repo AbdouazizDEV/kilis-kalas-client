@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true" class="auth-page otp-page">
+  <ion-grid class="auth-page__layout">
+    <ion-row class="auth-page__back-row">
+      <ion-col size="12" class="auth-page__back-col">
+        <app-back-button [defaultHref]="backHref"></app-back-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="auth-page__header-row">
+      <ion-col size="12" class="auth-page__header-col">
+        <ion-text class="auth-page__title">{{ 'AUTH.OTP.TITLE' | translate }}</ion-text>
+        <ion-text class="auth-page__subtitle">{{ subtitleKey | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="otp-page__input-row">
+      <ion-col size="12" class="otp-page__input-col">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <app-otp-input formControlName="code"></app-otp-input>
+
+          @if (errorMessage) {
+            <ion-text color="danger" class="auth-page__error">{{
+              errorMessage | translate
+            }}</ion-text>
+          }
+
+          <ion-row class="auth-page__link-row">
+            <ion-col size="12" class="auth-page__link-col ion-text-center">
+              <ion-text class="auth-page__link-text">{{ 'AUTH.OTP.NOT_RECEIVED' | translate }}</ion-text>
+              <app-text-link variant="accent" [underline]="false" (linkClick)="onResend()">
+                {{ 'AUTH.OTP.RESEND' | translate }}
+              </app-text-link>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="auth-page__action-row">
+            <ion-col size="12" class="auth-page__action-col">
+              <app-pill-button [loading]="loading" (buttonClick)="onSubmit()">
+                {{ 'AUTH.OTP.SUBMIT' | translate }}
+              </app-pill-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

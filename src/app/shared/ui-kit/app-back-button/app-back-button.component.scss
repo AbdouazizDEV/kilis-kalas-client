@@ -1,0 +1,23 @@
+.app-back-button {
+  --background: transparent;
+  --background-hover: rgba(0, 0, 0, 0.04);
+  --background-activated: rgba(0, 0, 0, 0.08);
+  --border-radius: 50%;
+  --padding-start: 0;
+  --padding-end: 0;
+  --box-shadow: none;
+
+  width: 13.33%;
+  min-width: 44px;
+  max-width: 50px;
+  aspect-ratio: 1;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  border-radius: 50%;
+
+  &__icon {
+    width: 40%;
+    height: auto;
+    object-fit: contain;
+  }
+}

@@ -1,8 +1,9 @@
 <ion-button
   class="app-pill-button"
+  type="button"
   [expand]="expand"
   [disabled]="disabled || loading"
-  (click)="onClick()"
+  (click)="onClick($event)"
 >
   @if (loading) {
     <ion-spinner name="crescent" slot="start"></ion-spinner>

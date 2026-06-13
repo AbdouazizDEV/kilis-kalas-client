@@ -13,6 +13,45 @@
       "CTA": "Commençons"
     }
   },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Connexion",
+      "SUBTITLE": "Salut! Bon retour parmi nous!",
+      "IDENTIFIER_LABEL": "Email ou numéro de téléphone",
+      "PASSWORD_LABEL": "Mot de passe",
+      "PLACEHOLDER": "Tapez ici",
+      "FORGOT_PASSWORD": "mot de passe oublié",
+      "SUBMIT": "Se connecter",
+      "NO_ACCOUNT": "Vous n'avez pas de compte ?",
+      "CREATE_ACCOUNT": "Créer un compte",
+      "OR": "ou",
+      "ERROR": "Identifiants incorrects. Veuillez réessayer."
+    },
+    "FORGOT_PASSWORD": {
+      "TITLE": "Trouver mon compte",
+      "SUBTITLE": "Entrez votre email ou ou votre numéro de téléphone pour recevoir le code",
+      "IDENTIFIER_LABEL": "Email ou numéro de téléphone",
+      "ERROR": "Impossible d'envoyer le code. Veuillez réessayer."
+    },
+    "OTP": {
+      "TITLE": "Code de verification",
+      "SUBTITLE_RESET": "Entrez le code que nous avons envoyez sur votre email",
+      "SUBTITLE_LOGIN": "Entrez le code que nous avons envoyé sur votre téléphone",
+      "NOT_RECEIVED": "Code non reçu?",
+      "RESEND": "Renvoyer le code",
+      "SUBMIT": "Vérifier",
+      "ERROR": "Code invalide. Veuillez réessayer."
+    },
+    "NEW_PASSWORD": {
+      "TITLE": "Nouveau mot de passe",
+      "SUBTITLE": "Votre mot de passe doit être différent de votre ancien mot de passe",
+      "PASSWORD_LABEL": "Nouveau mot de passe",
+      "CONFIRM_LABEL": "Confirmer le mot de passe",
+      "SUBMIT": "Créer un nouveau mot de passe",
+      "MISMATCH": "Les mots de passe ne correspondent pas.",
+      "ERROR": "Impossible de mettre à jour le mot de passe."
+    }
+  },
   "COMMON": {
     "LOADING": "Chargement...",
     "CONTINUE": "Continuer",

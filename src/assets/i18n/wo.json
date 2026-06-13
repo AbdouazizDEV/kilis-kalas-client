@@ -13,6 +13,45 @@
       "CTA": "Tambali"
     }
   },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Dugg",
+      "SUBTITLE": "Salam! Dalal jamm!",
+      "IDENTIFIER_LABEL": "Email walla nimero telefon",
+      "PASSWORD_LABEL": "Baatu jàpp",
+      "PLACEHOLDER": "Bind fii",
+      "FORGOT_PASSWORD": "firgal baatu jàpp bi",
+      "SUBMIT": "Dugg",
+      "NO_ACCOUNT": "Amuloo compte ?",
+      "CREATE_ACCOUNT": "Sos compte",
+      "OR": "walla",
+      "ERROR": "Xibaar yi baaxul. Jéemaatal."
+    },
+    "FORGOT_PASSWORD": {
+      "TITLE": "Gis sama compte",
+      "SUBTITLE": "Bind sa email walla sa nimero telefon ngir am code bi",
+      "IDENTIFIER_LABEL": "Email walla nimero telefon",
+      "ERROR": "Mënuloo yónnee code bi. Jéemaatal."
+    },
+    "OTP": {
+      "TITLE": "Code bu wér gi",
+      "SUBTITLE_RESET": "Bind code bi nu yónnee ci sa email",
+      "SUBTITLE_LOGIN": "Bind code bi nu yónnee ci sa telefon",
+      "NOT_RECEIVED": "Amuloo code bi?",
+      "RESEND": "Yónnee code bi",
+      "SUBMIT": "Wérël",
+      "ERROR": "Code bi baaxul. Jéemaatal."
+    },
+    "NEW_PASSWORD": {
+      "TITLE": "Baatu jàpp bu bees",
+      "SUBTITLE": "Sa baatu jàpp bu bees dafa wara wuute ak bi nga amoon",
+      "PASSWORD_LABEL": "Baatu jàpp bu bees",
+      "CONFIRM_LABEL": "Wérël baatu jàpp bi",
+      "SUBMIT": "Sos baatu jàpp bu bees",
+      "MISMATCH": "Baatu jàpp yi matul.",
+      "ERROR": "Mënuloo soppi baatu jàpp bi."
+    }
+  },
   "COMMON": {
     "LOADING": "Mi ngi yor...",
     "CONTINUE": "Kontine",

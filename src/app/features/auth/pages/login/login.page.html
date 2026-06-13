@@ -1,0 +1,111 @@
+<ion-content [fullscreen]="true" class="login">
+  <ion-grid class="login__layout">
+    <ion-row class="login__header-row">
+      <ion-col size="12" class="login__header-col ion-text-center">
+        <ion-img
+          src="assets/images/logo1.png"
+          alt="Kilis Kalas"
+          class="login__logo"
+        ></ion-img>
+        <ion-text class="login__title">{{ 'AUTH.LOGIN.TITLE' | translate }}</ion-text>
+        <ion-text class="login__subtitle">{{ 'AUTH.LOGIN.SUBTITLE' | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="login__form-row">
+      <ion-col size="12" class="login__form-col">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <ion-grid class="login__fields">
+            <ion-row>
+              <ion-col size="12">
+                <app-input
+                  variant="pill"
+                  formControlName="identifier"
+                  [label]="'AUTH.LOGIN.IDENTIFIER_LABEL' | translate"
+                  [placeholder]="'AUTH.LOGIN.PLACEHOLDER' | translate"
+                  type="text"
+                ></app-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="login__password-row">
+              <ion-col size="12">
+                <app-input
+                  variant="pill"
+                  formControlName="password"
+                  [label]="'AUTH.LOGIN.PASSWORD_LABEL' | translate"
+                  type="password"
+                  [showPasswordToggle]="true"
+                ></app-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="login__forgot-row">
+              <ion-col size="12" class="ion-text-end">
+                <app-text-link routerLink="/auth/forgot-password">
+                  {{ 'AUTH.LOGIN.FORGOT_PASSWORD' | translate }}
+                </app-text-link>
+              </ion-col>
+            </ion-row>
+
+            @if (errorMessage) {
+              <ion-row>
+                <ion-col size="12">
+                  <ion-text color="danger" class="login__error">{{
+                    errorMessage | translate
+                  }}</ion-text>
+                </ion-col>
+              </ion-row>
+            }
+
+            <ion-row class="login__submit-row">
+              <ion-col size="12">
+                <app-pill-button [loading]="loading" (buttonClick)="onSubmit()">
+                  {{ 'AUTH.LOGIN.SUBMIT' | translate }}
+                </app-pill-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="login__signup-row">
+      <ion-col size="12" class="login__signup-col ion-text-center">
+        <ion-text class="login__signup-text">{{ 'AUTH.LOGIN.NO_ACCOUNT' | translate }}</ion-text>
+        <app-text-link variant="accent" routerLink="/auth/register">
+          {{ 'AUTH.LOGIN.CREATE_ACCOUNT' | translate }}
+        </app-text-link>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="login__divider-row ion-align-items-center">
+      <ion-col class="login__divider-line-col">
+        <ion-text class="login__divider-line"></ion-text>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-text class="login__divider-text">{{ 'AUTH.LOGIN.OR' | translate }}</ion-text>
+      </ion-col>
+      <ion-col class="login__divider-line-col">
+        <ion-text class="login__divider-line"></ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="login__google-row">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button
+          type="button"
+          fill="clear"
+          class="login__google-btn"
+          (ionClick)="onGoogleLogin()"
+        >
+          <ion-img
+            src="assets/icon/PlatformGoogle.svg"
+            alt="Google"
+            class="login__google-icon"
+          ></ion-img>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

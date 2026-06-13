@@ -62,6 +62,7 @@
     flex: 0 0 var(--welcome-hero-h);
     width: var(--welcome-hero-w);
     margin-top: 1%;
+    overflow: hidden;
   }
 
   &__hero-col {
@@ -130,6 +131,8 @@
     width: var(--welcome-content-w);
     margin-top: auto;
     padding-top: var(--welcome-footer-pad-top);
+    position: relative;
+    z-index: 10;
   }
 
   &__footer-col {

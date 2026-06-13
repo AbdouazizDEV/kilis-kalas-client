@@ -1,16 +1,75 @@
-<ion-item class="app-input" [class.app-input--error]="!!errorMessage" lines="none">
-  @if (label) {
-    <ion-label position="stacked">{{ label }}</ion-label>
+@if (variant === 'pill') {
+  <ion-grid class="app-input-field">
+    @if (label) {
+      <ion-row class="app-input-field__label-row">
+        <ion-col size="12">
+          <ion-label class="app-input-field__label">{{ label }}</ion-label>
+        </ion-col>
+      </ion-row>
+    }
+
+    <ion-row class="app-input-field__control-row">
+      <ion-col size="12">
+        <ion-item
+          class="app-input app-input--pill"
+          [class.app-input--error]="!!errorMessage"
+          lines="none"
+        >
+          <ion-input
+            [type]="inputType"
+            [placeholder]="placeholder"
+            [value]="value"
+            [disabled]="disabled"
+            (ionInput)="onInput($event)"
+            (ionBlur)="onBlur()"
+          ></ion-input>
+          @if (showPasswordToggle && type === 'password') {
+            <ion-icon
+              slot="end"
+              class="app-input__toggle"
+              [name]="toggleIcon"
+              (click)="togglePasswordVisibility()"
+            ></ion-icon>
+          }
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    @if (errorMessage) {
+      <ion-row>
+        <ion-col size="12">
+          <ion-note color="danger" class="app-input__error">{{ errorMessage }}</ion-note>
+        </ion-col>
+      </ion-row>
+    }
+  </ion-grid>
+} @else {
+  <ion-item
+    class="app-input"
+    [class.app-input--error]="!!errorMessage"
+    lines="none"
+  >
+    @if (label) {
+      <ion-label class="app-input__label" position="stacked">{{ label }}</ion-label>
+    }
+    <ion-input
+      [type]="inputType"
+      [placeholder]="placeholder"
+      [value]="value"
+      [disabled]="disabled"
+      (ionInput)="onInput($event)"
+      (ionBlur)="onBlur()"
+    ></ion-input>
+    @if (showPasswordToggle && type === 'password') {
+      <ion-icon
+        slot="end"
+        class="app-input__toggle"
+        [name]="toggleIcon"
+        (click)="togglePasswordVisibility()"
+      ></ion-icon>
+    }
+  </ion-item>
+  @if (errorMessage) {
+    <ion-note color="danger" class="app-input__error">{{ errorMessage }}</ion-note>
   }
-  <ion-input
-    [type]="type"
-    [placeholder]="placeholder"
-    [value]="value"
-    [disabled]="disabled"
-    (ionInput)="onInput($event)"
-    (ionBlur)="onBlur()"
-  ></ion-input>
-</ion-item>
-@if (errorMessage) {
-  <ion-note color="danger" class="app-input__error">{{ errorMessage }}</ion-note>
 }

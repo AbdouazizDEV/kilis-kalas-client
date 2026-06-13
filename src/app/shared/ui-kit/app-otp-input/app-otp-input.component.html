@@ -1,0 +1,22 @@
+<ion-grid class="app-otp-input">
+  <ion-row class="app-otp-input__row ion-justify-content-center">
+    @for (digit of digits; track $index) {
+      <ion-col size="auto" class="app-otp-input__col">
+        <ion-text class="app-otp-input__cell">
+          <ion-input
+            #otpCell
+            class="app-otp-input__field"
+            type="tel"
+            inputmode="numeric"
+            maxlength="1"
+            [value]="digit"
+            [disabled]="disabled"
+            (ionInput)="onDigitInput($index, $event)"
+            (keydown)="onDigitKeyDown($index, $event)"
+            (ionBlur)="onBlur()"
+          ></ion-input>
+        </ion-text>
+      </ion-col>
+    }
+  </ion-row>
+</ion-grid>

@@ -23,8 +23,8 @@ describe('AuthService', () => {
     });
   });
 
-  it('should validate OTP with 6 digits', (done) => {
-    service.verifyOtp('+221771234567', '123456').subscribe((result) => {
+  it('should validate OTP with 4 digits', (done) => {
+    service.verifyOtp('+221771234567', '1234').subscribe((result) => {
       expect(result.success).toBeTrue();
       expect(result.token).toBeDefined();
       done();

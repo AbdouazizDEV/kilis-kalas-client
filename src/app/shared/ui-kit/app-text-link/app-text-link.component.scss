@@ -1,0 +1,46 @@
+:host {
+  display: inline;
+  vertical-align: baseline;
+}
+
+.app-text-link {
+  --background: transparent;
+  --background-hover: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+  --box-shadow: none;
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --ripple-color: transparent;
+
+  display: inline;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  vertical-align: baseline;
+  font-family: var(--kk-font-body);
+  font-weight: 300;
+  font-size: 87.5%;
+  line-height: 123%;
+  letter-spacing: 0.005em;
+  text-transform: none;
+  text-decoration: underline;
+  color: #000000;
+  cursor: pointer;
+
+  &--accent {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 87.5%;
+    line-height: 150%;
+    text-decoration: none;
+    color: var(--kk-brand-green, #10b981);
+  }
+
+  &--plain {
+    text-decoration: none;
+  }
+}

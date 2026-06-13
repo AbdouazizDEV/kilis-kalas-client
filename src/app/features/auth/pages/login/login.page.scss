@@ -1,0 +1,221 @@
+// Référence maquette : 375 × 812 — toutes les mesures en %
+.login {
+  --login-pad-x: 3.87%;
+  --login-content-w: 89.33%;
+  --login-header-top: 5%;
+  --login-logo-size: 20%;
+  --login-field-gap: 4.93%;
+  --login-title-size: 162.5%;
+  --login-title-lh: 158%;
+  --login-subtitle-size: 87.5%;
+
+  --background: #ffffff;
+  font-size: 100%;
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+    padding: var(--login-header-top) var(--login-pad-x) 5%;
+    box-sizing: border-box;
+  }
+
+  &__header-row {
+    flex: 0 0 auto;
+    width: var(--login-content-w);
+    margin-bottom: 4.93%;
+  }
+
+  &__header-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.46%;
+    padding: 0;
+  }
+
+  &__logo {
+    width: var(--login-logo-size);
+    aspect-ratio: 1;
+    object-fit: contain;
+    margin-bottom: 1.23%;
+  }
+
+  &__title {
+    display: block;
+    font-family: var(--kk-font-body);
+    font-weight: 500;
+    font-size: var(--login-title-size);
+    line-height: var(--login-title-lh);
+    color: #000000;
+  }
+
+  &__subtitle {
+    display: block;
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: var(--login-subtitle-size);
+    line-height: 123%;
+    letter-spacing: 0.005em;
+    color: #000000;
+  }
+
+  &__form-row {
+    flex: 0 0 auto;
+    width: var(--login-content-w);
+  }
+
+  &__form-col {
+    padding: 0;
+  }
+
+  &__fields {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  &__password-row {
+    margin-top: var(--login-field-gap);
+  }
+
+  &__forgot-row {
+    margin-top: 2.46%;
+  }
+
+  &__forgot {
+    font-family: var(--kk-font-body);
+    font-weight: 300;
+    font-size: 81.25%;
+    line-height: 123%;
+    letter-spacing: 0.005em;
+    text-decoration: underline;
+    color: #000000;
+    cursor: pointer;
+  }
+
+  &__error {
+    display: block;
+    font-size: 87.5%;
+    margin-top: 2%;
+  }
+
+  &__submit-row {
+    margin-top: 5.91%;
+  }
+
+  &__signup-row {
+    flex: 0 0 auto;
+    width: var(--login-content-w);
+    margin-top: 8.62%;
+  }
+
+  &__signup-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35em;
+    padding: 0;
+  }
+
+  &__signup-text {
+    display: inline;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 87.5%;
+    line-height: 150%;
+    letter-spacing: 0.005em;
+    color: #646262;
+  }
+
+  &__signup-link {
+    color: var(--kk-brand-green, #10b981);
+    cursor: pointer;
+  }
+
+  &__divider-row {
+    flex: 0 0 auto;
+    width: 89.87%;
+    margin-top: 5.17%;
+    gap: 5.33%;
+  }
+
+  &__divider-line-col {
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__divider-line {
+    display: block;
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #c4c4c4;
+  }
+
+  &__divider-text {
+    font-family: var(--kk-font-body);
+    font-weight: 600;
+    font-size: 87.5%;
+    line-height: 128%;
+    letter-spacing: 0.005em;
+    color: #646262;
+    white-space: nowrap;
+  }
+
+  &__google-row {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-top: 4.8%;
+    margin-bottom: 4%;
+  }
+
+  &__google-btn {
+    --background: transparent;
+    --background-hover: transparent;
+    --background-activated: transparent;
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    --ripple-color: transparent;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17.33%;
+    aspect-ratio: 1;
+    margin: 0;
+    border: 1px solid var(--kk-brand-green, #10b981);
+    border-radius: 50%;
+  }
+
+  &__google-icon {
+    width: 67.69%;
+    height: 67.69%;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 768px) {
+  .login {
+    --login-pad-x: 8%;
+    --login-content-w: 72%;
+    --login-header-top: 8%;
+    --login-logo-size: 14%;
+    font-size: 112.5%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login {
+    --login-content-w: 48%;
+    --login-logo-size: 10%;
+    font-size: 125%;
+  }
+}

@@ -1,0 +1,49 @@
+.app-otp-input {
+  --ion-grid-padding: 0;
+  width: 100%;
+  padding: 0;
+
+  &__row {
+    gap: 5.33%;
+    flex-wrap: nowrap;
+  }
+
+  &__col {
+    padding: 0;
+    flex: 0 0 16%;
+    max-width: 16%;
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 60 / 41;
+    background: #eeeded;
+    border-radius: 11.5%;
+  }
+
+  &__field {
+    --background: transparent;
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 87.5%;
+    line-height: 154%;
+    letter-spacing: 0.005em;
+    color: #000000;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-otp-input__col {
+    flex: 0 0 14%;
+    max-width: 14%;
+  }
+}

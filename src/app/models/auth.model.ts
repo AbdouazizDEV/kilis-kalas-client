@@ -24,3 +24,9 @@ export interface OtpVerification {
   phone: string;
   code: string;
 }
+
+export interface ResetPasswordData {
+  identifier: string;
+  code: string;
+  password: string;
+}

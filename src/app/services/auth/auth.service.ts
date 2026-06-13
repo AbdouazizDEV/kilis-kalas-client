@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { IAuthService } from '../../core/interfaces/i-auth.service';
-import { AuthResult, LoginCredentials, RegisterData } from '../../models/auth.model';
+import { AuthResult, LoginCredentials, RegisterData, ResetPasswordData } from '../../models/auth.model';
 
 @Injectable()
 export class AuthService implements IAuthService {
@@ -25,7 +25,7 @@ export class AuthService implements IAuthService {
   }
 
   verifyOtp(phone: string, code: string): Observable<AuthResult> {
-    const isValid = code.length === 6;
+    const isValid = code.length === 4;
     return of({
       success: isValid,
       token: isValid ? 'mock-jwt-token' : undefined,
@@ -34,8 +34,16 @@ export class AuthService implements IAuthService {
     }).pipe(delay(400));
   }
 
-  forgotPassword(email: string): Observable<void> {
+  forgotPassword(identifier: string): Observable<void> {
     return of(void 0).pipe(delay(300));
+  }
+
+  resetPassword(data: ResetPasswordData): Observable<AuthResult> {
+    const isValid = data.password.length >= 6 && data.code.length === 4;
+    return of({
+      success: isValid,
+      message: isValid ? 'Mot de passe mis à jour' : 'Impossible de réinitialiser le mot de passe',
+    }).pipe(delay(500));
   }
 
   logout(): Observable<void> {

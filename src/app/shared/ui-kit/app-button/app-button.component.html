@@ -4,7 +4,7 @@
   [color]="color"
   [disabled]="disabled || loading"
   class="app-button"
-  (click)="onClick()"
+  (ionClick)="onClick()"
 >
   @if (loading) {
     <ion-spinner name="crescent" slot="start"></ion-spinner>
