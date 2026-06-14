@@ -1,0 +1,39 @@
+<ion-grid class="ride-search-results">
+  <ion-row>
+    <ion-col size="12">
+      <ion-text class="ride-search-results__title">{{
+        'RIDE_BOOKING.SEARCH_RESULTS' | translate
+      }}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  @if (loading) {
+    <ion-row>
+      <ion-col size="12" class="ride-search-results__status-col">
+        <ion-spinner name="crescent" class="ride-search-results__spinner"></ion-spinner>
+        <ion-text class="ride-search-results__status">{{
+          'RIDE_BOOKING.SEARCHING' | translate
+        }}</ion-text>
+      </ion-col>
+    </ion-row>
+  } @else if (showEmpty && !results.length) {
+    <ion-row>
+      <ion-col size="12">
+        <ion-text class="ride-search-results__status">{{
+          'RIDE_BOOKING.NO_RESULTS' | translate
+        }}</ion-text>
+      </ion-col>
+    </ion-row>
+  } @else {
+    <ion-row class="ride-search-results__list">
+      @for (place of results; track place.id) {
+        <ion-col size="12">
+          <button type="button" class="ride-search-results__item" (click)="placeSelect.emit(place)">
+            <ion-icon name="location" class="ride-search-results__icon"></ion-icon>
+            <ion-text class="ride-search-results__label">{{ place.label }}</ion-text>
+          </button>
+        </ion-col>
+      }
+    </ion-row>
+  }
+</ion-grid>

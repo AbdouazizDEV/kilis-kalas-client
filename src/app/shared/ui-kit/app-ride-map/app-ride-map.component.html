@@ -1,0 +1,22 @@
+<ion-grid class="app-ride-map" #mapHost>
+  @if (mapsReady && mapHeightPx > 0) {
+    <google-map
+      class="app-ride-map__canvas"
+      [height]="mapHeightPx + 'px'"
+      [width]="'100%'"
+      [center]="center"
+      [zoom]="zoom"
+      [options]="mapOptions"
+      (mapInitialized)="onMapInitialized($event)"
+      (mapClick)="onMapClick($event)"
+    ></google-map>
+  } @else if (loadError || !apiKeyConfigured) {
+    <ion-text class="app-ride-map__fallback">
+      @if (!apiKeyConfigured) {
+        {{ 'HOME.MAP_API_KEY_MISSING' | translate }}
+      } @else {
+        {{ 'HOME.MAP_LOAD_ERROR' | translate }}
+      }
+    </ion-text>
+  }
+</ion-grid>

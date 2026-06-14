@@ -56,5 +56,32 @@
     "LOADING": "Mi ngi yor...",
     "CONTINUE": "Kontine",
     "LOGIN": "Dugg"
+  },
+  "HOME": {
+    "BRAND": "Kilis Kalas",
+    "TITLE": "Ndax nga pare ngir sa wotu bi ci topp ?",
+    "SEARCH_PLACEHOLDER": "Tann destination",
+    "DEFINE_ON_MAP": "Taxal ci kart bi",
+    "MAP_API_KEY_MISSING": "Kart Google Maps dina am su nu defee API key bi.",
+    "MAP_LOAD_ERROR": "Mënuloo yeb Google Maps. Seetal API key bi, facturation ak restrictions (localhost).",
+    "DELIVERY": "Yónnee",
+    "ORDER": "Commande"
+  },
+  "RIDE_BOOKING": {
+    "TITLE": "Sa wotu bi ci topp",
+    "SEARCH_PLACEHOLDER": "Tann destination",
+    "CHOOSE_PICKUP": "Tann benn barab",
+    "CURRENT_POSITION": "Sama barab bi léegi",
+    "SHARE_CURRENT_POSITION": "Séddale sama barab bi léegi",
+    "SEARCH_RESULTS": "Gis-gis bi",
+    "CHOOSE_DESTINATION": "Tann sa destination",
+    "SELECTED_ON_MAP": "Barab ci kart bi",
+    "VALIDATE": "Wérël",
+    "SEARCHING": "Mi ngi seet…",
+    "NO_RESULTS": "Amul benn barab ci gox bi Diourbel.",
+    "OUT_OF_REGION": "Destination bi nekkul ci gox bi Diourbel.",
+    "SEARCH_ERROR": "Mënuloo yeb gis-gis yi. Jéemaatal.",
+    "EXPAND_SHEET": "Ubbi seet bi",
+    "COLLAPSE_SHEET": "Wàññi pano bi"
   }
 }

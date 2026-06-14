@@ -1,0 +1,312 @@
+// Référence maquette : 375 × 812 — %
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ride-booking-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ride-booking {
+  --rb-pad-x: 5.33%;
+  --rb-content-w: 89.33%;
+  --rb-top-pad: 9.73%;
+  --rb-gap: 2.96%;
+  --background: #ffffff;
+  font-size: 112.5%;
+
+  &--route {
+    --background: transparent;
+  }
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+    padding: var(--rb-top-pad) var(--rb-pad-x) 4%;
+    box-sizing: border-box;
+  }
+
+  &__map {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__map-controls {
+    position: absolute;
+    top: 9.73%;
+    left: var(--rb-pad-x);
+    right: var(--rb-pad-x);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+  }
+
+  &__back-btn,
+  &__locate-btn {
+    flex-shrink: 0;
+  }
+
+  &__locate-btn {
+    --background: #ffffff;
+    --background-hover: #f5f5f5;
+    --background-activated: #ececec;
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    width: 13.33%;
+    min-width: 44px;
+    max-width: 50px;
+    aspect-ratio: 1;
+    margin: 0;
+    border: 1px solid rgba(0, 0, 0, 0.17);
+    border-radius: 50%;
+  }
+
+  &__locate-icon {
+    font-size: 1.375rem;
+    color: #000000;
+  }
+
+  &__header-row {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: var(--rb-gap);
+  }
+
+  &__header-col {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.125rem;
+    padding: 0;
+  }
+
+  &__title {
+    font-family: var(--kk-font-body);
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #000000;
+    text-align: center;
+  }
+
+  &__header-col .ride-booking__back-btn {
+    position: absolute;
+    left: 0;
+  }
+
+  &__card-row,
+  &__share-row,
+  &__results-row,
+  &__action-row {
+    width: var(--rb-content-w);
+  }
+
+  &__card-row {
+    margin-bottom: var(--rb-gap);
+  }
+
+  &__share-row {
+    margin-bottom: calc(var(--rb-gap) * 1.2);
+  }
+
+  &__share-btn {
+    --background: transparent;
+    --background-hover: rgba(0, 0, 0, 0.04);
+    --background-activated: rgba(0, 0, 0, 0.08);
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    display: flex;
+    align-items: center;
+    gap: 2.67%;
+    margin: 0;
+    text-transform: none;
+  }
+
+  &__share-icon {
+    font-size: 1.25rem;
+    color: #000000;
+  }
+
+  &__share-btn ion-text {
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: #000000;
+  }
+
+  &__results-row {
+    flex: 1 1 auto;
+    margin-bottom: var(--rb-gap);
+  }
+
+  &__action-row {
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding-bottom: 2%;
+  }
+
+  &__search-error,
+  &__error-row ion-text {
+    display: block;
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    color: #b45309;
+  }
+
+  &__error-row {
+    width: var(--rb-content-w);
+    margin-bottom: var(--rb-gap);
+  }
+}
+
+.ride-booking__sheet {
+  --sheet-pad-x: 5.33%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #f9f9f9;
+  border-radius: 60px 60px 0 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: height 0.28s ease;
+
+  &--compact {
+    height: 17.75rem;
+    max-height: 42vh;
+  }
+
+  &--search {
+    height: min(72vh, 34rem);
+    max-height: 88vh;
+  }
+
+  &-grab {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 0.25rem;
+    margin: 0.8125rem auto 0.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+  }
+
+  &-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 var(--sheet-pad-x);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &-title {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: var(--kk-font-body);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.25;
+    color: #000000;
+    text-align: center;
+  }
+
+  &-search {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  &-destination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.25rem;
+    padding: 0 0 0.625rem;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &-pin {
+    flex-shrink: 0;
+    font-size: 1.5625rem;
+    color: #000000;
+  }
+
+  &-address {
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.25;
+    color: #000000;
+  }
+
+  &-footer {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0.75rem var(--sheet-pad-x) calc(1rem + env(safe-area-inset-bottom));
+    background: #f9f9f9;
+    box-sizing: border-box;
+
+    .app-pill-button {
+      --border-radius: 100px;
+      min-height: 3.125rem;
+    }
+  }
+
+  .ride-booking__search-error {
+    margin-top: 0.5rem;
+  }
+
+  .ride-booking__share-btn {
+    align-self: flex-start;
+  }
+}
+
+@media (min-width: 768px) {
+  .ride-booking {
+    --rb-pad-x: 8%;
+    --rb-content-w: 72%;
+    --rb-top-pad: 6%;
+    font-size: 118.75%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ride-booking {
+    --rb-content-w: 48%;
+    font-size: 125%;
+  }
+}

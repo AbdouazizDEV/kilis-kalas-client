@@ -1,0 +1,27 @@
+<ion-grid #mapHost class="app-map-preview__host">
+  @if (mapsReady && mapHeightPx > 0) {
+    <google-map
+      class="app-map-preview__map"
+      [center]="center"
+      [zoom]="zoom"
+      [options]="mapOptions"
+      [height]="mapHeightPx"
+      width="100%"
+      (mapInitialized)="onMapInitialized($event)"
+      (authFailure)="onAuthFailure()"
+    >
+      <map-marker [position]="center" [options]="markerOptions"></map-marker>
+    </google-map>
+  } @else if (!mapsReady || mapHeightPx === 0) {
+    <ion-img src="assets/images/home-map.svg" alt="" class="app-map-preview__fallback"></ion-img>
+    @if (!apiKeyConfigured) {
+      <ion-text class="app-map-preview__hint">{{
+        'HOME.MAP_API_KEY_MISSING' | translate
+      }}</ion-text>
+    } @else if (loadError) {
+      <ion-text class="app-map-preview__hint app-map-preview__hint--error">{{
+        'HOME.MAP_LOAD_ERROR' | translate
+      }}</ion-text>
+    }
+  }
+</ion-grid>

@@ -56,5 +56,32 @@
     "LOADING": "Chargement...",
     "CONTINUE": "Continuer",
     "LOGIN": "Se connecter"
+  },
+  "HOME": {
+    "BRAND": "Kilis Kalas",
+    "TITLE": "Prêt pour votre prochain trajet ?",
+    "SEARCH_PLACEHOLDER": "Choisir une destination",
+    "DEFINE_ON_MAP": "Définir sur la carte",
+    "MAP_API_KEY_MISSING": "Carte Google Maps disponible dès l'ajout de la clé API.",
+    "MAP_LOAD_ERROR": "Impossible de charger Google Maps. Vérifiez la clé API, la facturation et les restrictions (localhost).",
+    "DELIVERY": "Livraison",
+    "ORDER": "Commander"
+  },
+  "RIDE_BOOKING": {
+    "TITLE": "Votre prochain trajet",
+    "SEARCH_PLACEHOLDER": "Choisir une destination",
+    "CHOOSE_PICKUP": "Choisir une position",
+    "CURRENT_POSITION": "Ma position Actuelle",
+    "SHARE_CURRENT_POSITION": "Partager ma position actuelle",
+    "SEARCH_RESULTS": "Résultat de recherche",
+    "CHOOSE_DESTINATION": "Choisir ta destination",
+    "SELECTED_ON_MAP": "Position sur la carte",
+    "VALIDATE": "Valider",
+    "SEARCHING": "Recherche en cours…",
+    "NO_RESULTS": "Aucun lieu trouvé dans la région de Diourbel.",
+    "OUT_OF_REGION": "Cette destination est hors de la région de Diourbel.",
+    "SEARCH_ERROR": "Impossible de charger les résultats. Réessayez.",
+    "EXPAND_SHEET": "Ouvrir la recherche",
+    "COLLAPSE_SHEET": "Réduire le panneau"
   }
 }

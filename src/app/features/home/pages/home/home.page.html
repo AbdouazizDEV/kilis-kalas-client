@@ -1,0 +1,119 @@
+<ion-content [fullscreen]="true" class="home">
+  <ion-grid class="home__layout">
+    <ion-row class="home__header-row">
+      <ion-col size="12" class="home__header-col">
+        <ion-button
+          type="button"
+          fill="clear"
+          class="home__menu-btn"
+          aria-label="Menu"
+          (click)="onMenu()"
+        >
+          <ion-icon name="menu-outline" class="home__menu-icon"></ion-icon>
+        </ion-button>
+
+        <ion-grid class="home__brand">
+          <ion-row class="home__brand-row ion-align-items-center">
+            <ion-col size="auto" class="home__brand-text-col">
+              <ion-text class="home__brand-name">{{ 'HOME.BRAND' | translate }}</ion-text>
+            </ion-col>
+            <ion-col size="auto" class="home__brand-logo-col">
+              <ion-img
+                src="assets/images/logo1.png"
+                alt="Kilis Kalas"
+                class="home__brand-logo"
+              ></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="home__title-row">
+      <ion-col size="12" class="home__title-col">
+        <ion-text class="home__title">{{ 'HOME.TITLE' | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="home__search-row">
+      <ion-col size="12" class="home__search-col">
+        <ion-button
+          type="button"
+          fill="clear"
+          expand="block"
+          class="home__search-bar"
+          (click)="onChooseDestination()"
+        >
+          <ion-icon name="location-outline" class="home__search-icon"></ion-icon>
+          <ion-text class="home__search-placeholder">{{
+            'HOME.SEARCH_PLACEHOLDER' | translate
+          }}</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="home__map-row">
+      <ion-col size="12" class="home__map-col">
+        <ion-grid class="home__map-card">
+          <ion-row class="home__map-preview-row">
+            <ion-col size="12" class="home__map-preview-col">
+              <app-map-preview class="home__map-preview"></app-map-preview>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="home__map-action-row">
+            <ion-col size="12" class="home__map-action-col">
+              <ion-button
+                type="button"
+                fill="clear"
+                expand="block"
+                class="home__map-action-btn"
+                (click)="onDefineOnMap()"
+              >
+                {{ 'HOME.DEFINE_ON_MAP' | translate }}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="home__options-row">
+      <ion-col size="12" class="home__options-col">
+        <div class="home__options-grid">
+          <ion-button
+            type="button"
+            fill="clear"
+            class="home__option-card"
+            (click)="onDelivery()"
+          >
+            <div class="home__option-content">
+              <ion-img
+                src="assets/icon/Motorcycle.svg"
+                alt=""
+                class="home__option-icon home__option-icon--delivery"
+              ></ion-img>
+              <ion-text class="home__option-label">{{ 'HOME.DELIVERY' | translate }}</ion-text>
+            </div>
+          </ion-button>
+
+          <ion-button
+            type="button"
+            fill="clear"
+            class="home__option-card"
+            (click)="onOrder()"
+          >
+            <div class="home__option-content">
+              <ion-img
+                src="assets/icon/noto_package.svg"
+                alt=""
+                class="home__option-icon home__option-icon--order"
+              ></ion-img>
+              <ion-text class="home__option-label">{{ 'HOME.ORDER' | translate }}</ion-text>
+            </div>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
