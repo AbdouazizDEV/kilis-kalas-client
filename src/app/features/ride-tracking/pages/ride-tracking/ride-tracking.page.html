@@ -1,0 +1,181 @@
+<div class="ride-tracking-page">
+  <ion-content [fullscreen]="true" class="ride-tracking">
+    <app-ride-map
+      class="ride-tracking__map"
+      [pickup]="pickup"
+      [destination]="destination"
+      [interactive]="true"
+    ></app-ride-map>
+
+    <div class="ride-tracking__map-controls">
+      @if (!isCompleted) {
+        <app-back-button defaultHref="/home" class="ride-tracking__back-btn"></app-back-button>
+      }
+      <ion-button
+        type="button"
+        fill="clear"
+        class="ride-tracking__locate-btn"
+        (click)="onLocateMe()"
+      >
+        <ion-icon name="locate-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-content>
+
+  <aside class="ride-tracking__sheet" [class.ride-tracking__sheet--completed]="isCompleted">
+    <button type="button" class="ride-tracking__sheet-grab" aria-hidden="true"></button>
+
+    <div class="ride-tracking__sheet-scroll">
+      @if (isSearching) {
+        <div class="ride-tracking__panel ride-tracking__panel--enter">
+          <ion-text class="ride-tracking__status-title">{{
+            'RIDE_TRACKING.SEARCHING_DRIVER' | translate
+          }}</ion-text>
+          <div class="ride-tracking__search-track" aria-hidden="true">
+            <ion-img
+              [src]="searchVehicleIcon"
+              alt=""
+              class="ride-tracking__search-icon"
+            ></ion-img>
+          </div>
+        </div>
+      }
+
+      @if (isDriverArriving) {
+        @if (ride?.driver; as driver) {
+          <div class="ride-tracking__panel ride-tracking__panel--enter">
+            <ion-text class="ride-tracking__status-title">
+              {{ 'RIDE_TRACKING.DRIVER_ARRIVING' | translate: { minutes: etaMinutes } }}
+            </ion-text>
+
+            <div class="ride-tracking__vehicle-card">
+              <ion-img [src]="driver.vehicle.iconSrc" alt="" class="ride-tracking__vehicle-icon"></ion-img>
+              <ion-text class="ride-tracking__plate">{{ driver.vehicle.plate }}</ion-text>
+              <div class="ride-tracking__vehicle-meta">
+                <ion-text class="ride-tracking__vehicle-model">{{ driver.vehicle.model }}</ion-text>
+                <ion-text class="ride-tracking__vehicle-color">{{ driver.vehicle.color }}</ion-text>
+              </div>
+            </div>
+
+            <div class="ride-tracking__driver-row">
+              <app-avatar [name]="driver.name" class="ride-tracking__avatar"></app-avatar>
+              <div class="ride-tracking__driver-info">
+                <ion-text class="ride-tracking__driver-name">{{ driver.name }}</ion-text>
+                <app-rating-stars
+                  [rating]="driver.rating"
+                  [readonly]="true"
+                  size="sm"
+                ></app-rating-stars>
+              </div>
+              <div class="ride-tracking__driver-actions">
+                <ion-button type="button" fill="clear" class="ride-tracking__action-btn" (click)="onOpenChat()">
+                  <ion-icon name="chatbubble-outline"></ion-icon>
+                </ion-button>
+                <ion-button type="button" fill="clear" class="ride-tracking__action-btn">
+                  <ion-icon name="call-outline"></ion-icon>
+                </ion-button>
+              </div>
+            </div>
+          </div>
+        }
+      }
+
+      @if (isInProgress) {
+        @if (ride?.driver; as driver) {
+          <div class="ride-tracking__panel ride-tracking__panel--enter">
+            <ion-text class="ride-tracking__status-title">
+              {{ 'RIDE_TRACKING.ETA' | translate: { minutes: etaMinutes } }}
+            </ion-text>
+
+            <div class="ride-tracking__vehicle-card">
+              <ion-img [src]="driver.vehicle.iconSrc" alt="" class="ride-tracking__vehicle-icon"></ion-img>
+              <ion-text class="ride-tracking__plate">{{ driver.vehicle.plate }}</ion-text>
+              <div class="ride-tracking__vehicle-meta">
+                <ion-text class="ride-tracking__vehicle-model">{{ driver.vehicle.model }}</ion-text>
+                <ion-text class="ride-tracking__vehicle-color">{{ driver.vehicle.color }}</ion-text>
+              </div>
+            </div>
+
+            <app-trip-route-summary
+              [pickupLabel]="pickup?.label || ''"
+              [destinationLabel]="destination?.label || ''"
+            ></app-trip-route-summary>
+
+            <div class="ride-tracking__utility-row">
+              <ion-button type="button" fill="clear" class="ride-tracking__utility-btn">
+                <ion-icon name="navigate-outline"></ion-icon>
+                <ion-text>{{ 'RIDE_TRACKING.SEND_TRIP' | translate }}</ion-text>
+              </ion-button>
+              <ion-button type="button" fill="clear" class="ride-tracking__utility-btn ride-tracking__utility-btn--danger">
+                <ion-icon name="warning-outline"></ion-icon>
+                <ion-text>{{ 'RIDE_TRACKING.EMERGENCY' | translate }}</ion-text>
+              </ion-button>
+            </div>
+          </div>
+        }
+      }
+
+      @if (isCompleted) {
+        @if (ride; as activeRide) {
+          @if (activeRide.driver; as driver) {
+            <div class="ride-tracking__panel ride-tracking__panel--enter">
+              <ion-text class="ride-tracking__status-title">{{
+                'RIDE_TRACKING.ARRIVED' | translate
+              }}</ion-text>
+
+              <div class="ride-tracking__completed-driver">
+                <app-avatar [name]="driver.name" class="ride-tracking__avatar"></app-avatar>
+                <div>
+                  <ion-text class="ride-tracking__driver-name">{{ driver.name }}</ion-text>
+                  <ion-text class="ride-tracking__completed-meta">
+                    {{ driver.vehicle.plate }} | {{ driver.vehicle.model }}
+                    {{ driver.vehicle.color }}
+                  </ion-text>
+                </div>
+              </div>
+
+              <div class="ride-tracking__trip-meta">
+                <div class="ride-tracking__trip-line">
+                  <ion-text>{{ 'RIDE_TRACKING.TRIP_DONE' | translate }}</ion-text>
+                  <ion-text>{{ activeRide.reference }}</ion-text>
+                </div>
+                <div class="ride-tracking__trip-line">
+                  <ion-text>{{ 'RIDE_TRACKING.DATE' | translate }}</ion-text>
+                  <ion-text>{{ completedDateLabel }}</ion-text>
+                </div>
+              </div>
+
+              <div class="ride-tracking__rating-block">
+                <ion-text class="ride-tracking__rating-title">{{
+                  'RIDE_TRACKING.RATE_TRIP' | translate
+                }}</ion-text>
+                <app-rating-stars
+                  [rating]="rating"
+                  size="lg"
+                  (ratingChange)="onRatingChange($event)"
+                ></app-rating-stars>
+              </div>
+            </div>
+          }
+        }
+      }
+    </div>
+
+    <div class="ride-tracking__sheet-footer">
+      @if (isCompleted) {
+        <div class="ride-tracking__finish-row">
+          <ion-button fill="outline" expand="block" class="ride-tracking__outline-btn" (click)="onViewDetails()">
+            {{ 'RIDE_TRACKING.VIEW_DETAILS' | translate }}
+          </ion-button>
+          <app-pill-button class="ride-tracking__finish-btn" (buttonClick)="onFinish()">
+            {{ 'RIDE_TRACKING.FINISH' | translate }}
+          </app-pill-button>
+        </div>
+      } @else {
+        <ion-button type="button" fill="clear" class="ride-tracking__cancel-btn" (click)="onCancel()">
+          {{ 'RIDE_TRACKING.CANCEL_ORDER' | translate }}
+        </ion-button>
+      }
+    </div>
+  </aside>
+</div>

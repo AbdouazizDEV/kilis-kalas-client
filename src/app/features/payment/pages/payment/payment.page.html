@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true" class="payment">
+  <ion-grid class="payment__layout">
+    <ion-row class="payment__header-row">
+      <ion-col size="12" class="payment__header-col">
+        <app-back-button
+          defaultHref="/ride-booking?phase=vehicle"
+          class="payment__back-btn"
+        ></app-back-button>
+        <ion-text class="payment__title">{{ 'PAYMENT.TITLE' | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="payment__options-row">
+      <ion-col size="12" class="payment__options-col">
+        @for (option of paymentOptions; track option.type) {
+          <app-payment-method-option
+            [type]="option.type"
+            [label]="option.labelKey | translate"
+            [iconSrc]="option.iconSrc"
+            [selected]="selectedMethod === option.type"
+            (selectedChange)="onMethodSelect($event)"
+          ></app-payment-method-option>
+        }
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

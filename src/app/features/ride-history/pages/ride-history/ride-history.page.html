@@ -1,0 +1,130 @@
+<ion-content [fullscreen]="true" class="ride-history">
+  <ion-grid class="ride-history__layout">
+    <ion-row class="ride-history__header-row">
+      <ion-col size="12" class="ride-history__header-col">
+        <app-back-button defaultHref="/ride-tracking" class="ride-history__back-btn"></app-back-button>
+        <ion-text class="ride-history__title">{{ 'RIDE_HISTORY.TITLE' | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__avatar-row">
+      <ion-col size="12" class="ride-history__avatar-col">
+        <app-avatar [name]="driverName" size="lg" class="ride-history__avatar"></app-avatar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="ride-history__center-col">
+        <ion-text class="ride-history__driver-name">{{ driverName }}</ion-text>
+        <ion-text class="ride-history__vehicle-meta">{{ vehicleMeta }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div class="ride-history__divider" aria-hidden="true"></div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_TRACKING.TRIP_DONE' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ tripReference }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_TRACKING.DATE' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ tripDateLabel }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div class="ride-history__divider" aria-hidden="true"></div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_HISTORY.DURATION' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ durationLabel }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_HISTORY.DISTANCE' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ distanceLabel }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_HISTORY.OFFER_TYPE' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ vehicleOfferLabel }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div class="ride-history__divider" aria-hidden="true"></div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__route-row">
+      <ion-col size="12">
+        <app-trip-route-summary
+          [pickupLabel]="pickupLabel"
+          [destinationLabel]="destinationLabel"
+        ></app-trip-route-summary>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div class="ride-history__divider" aria-hidden="true"></div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_HISTORY.PRICE' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ priceLabel }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_HISTORY.PAYMENT_METHOD' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value">{{ paymentLabel }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-history__detail-row ride-history__detail-row--last">
+      <ion-col size="6">
+        <ion-text class="ride-history__label">{{ 'RIDE_HISTORY.ORDER_STATUS' | translate }}</ion-text>
+      </ion-col>
+      <ion-col size="6" class="ion-text-end">
+        <ion-text class="ride-history__value ride-history__value--success">{{
+          'RIDE_HISTORY.STATUS_SUCCESS' | translate
+        }}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

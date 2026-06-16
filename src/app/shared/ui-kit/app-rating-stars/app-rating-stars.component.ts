@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IonCol, IonGrid, IonIcon, IonRow } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { star, starOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-rating-stars',
@@ -15,6 +17,10 @@ export class AppRatingStarsComponent {
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
   @Output() ratingChange = new EventEmitter<number>();
+
+  constructor() {
+    addIcons({ star, starOutline });
+  }
 
   get stars(): number[] {
     return Array.from({ length: this.maxStars }, (_, i) => i + 1);

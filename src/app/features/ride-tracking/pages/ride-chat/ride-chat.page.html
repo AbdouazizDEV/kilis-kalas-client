@@ -1,0 +1,48 @@
+<ion-content [fullscreen]="true" class="ride-chat">
+  <ion-grid class="ride-chat__layout">
+    <ion-row class="ride-chat__header-row">
+      <ion-col size="12" class="ride-chat__header-col">
+        <app-back-button defaultHref="/ride-tracking" class="ride-chat__back-btn"></app-back-button>
+        <ion-text class="ride-chat__title">{{ driverName }}</ion-text>
+        <ion-button type="button" fill="clear" class="ride-chat__call-btn">
+          <ion-icon name="call-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-chat__messages-row">
+      <ion-col size="12" class="ride-chat__messages-col">
+        @for (message of messages; track message.id) {
+          <div
+            class="ride-chat__message-wrap"
+            [class.ride-chat__message-wrap--mine]="message.sender === 'passenger'"
+          >
+            <div
+              class="ride-chat__bubble"
+              [class.ride-chat__bubble--mine]="message.sender === 'passenger'"
+            >
+              <ion-text>{{ message.text }}</ion-text>
+            </div>
+            <ion-text class="ride-chat__time">{{ message.sentAt | date: 'HH:mm' }}</ion-text>
+          </div>
+        }
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ride-chat__input-row">
+      <ion-col size="12" class="ride-chat__input-col">
+        <div class="ride-chat__composer">
+          <ion-input
+            class="ride-chat__input"
+            [placeholder]="'RIDE_TRACKING.CHAT_PLACEHOLDER' | translate"
+            [(ngModel)]="draft"
+            (keyup.enter)="onSend()"
+          ></ion-input>
+          <ion-button type="button" fill="clear" class="ride-chat__emoji-btn">
+            <ion-icon name="happy-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

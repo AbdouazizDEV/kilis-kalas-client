@@ -6,4 +6,5 @@ export interface IRideRepository {
   requestRide(request: RideRequest): Observable<Ride>;
   getRideStatus(rideId: string): Observable<Ride>;
   cancelRide(rideId: string): Observable<void>;
+  resetActiveRide(): void;
 }

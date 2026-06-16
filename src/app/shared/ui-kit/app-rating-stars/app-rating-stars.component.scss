@@ -1,28 +1,34 @@
 .app-rating-stars {
+  width: 100%;
   padding: 0;
 
   &__col {
-    padding: 0 1%;
+    padding: 0 0.25rem;
   }
 
   &__icon {
-    color: var(--kk-text-muted);
+    color: #d1d5db;
     cursor: pointer;
+    transition: color 0.2s ease, transform 0.15s ease;
+
+    &:active {
+      transform: scale(1.08);
+    }
 
     &--filled {
-      color: var(--kk-accent);
+      color: #10b981;
     }
   }
 
   &--sm .app-rating-stars__icon {
-    font-size: 120%;
+    font-size: 1.125rem;
   }
 
   &--md .app-rating-stars__icon {
-    font-size: 160%;
+    font-size: 1.5rem;
   }
 
   &--lg .app-rating-stars__icon {
-    font-size: 200%;
+    font-size: 2rem;
   }
 }

@@ -1,0 +1,10 @@
+<button
+  type="button"
+  class="payment-method-option"
+  [class.payment-method-option--selected]="selected"
+  (click)="onSelect()"
+>
+  <span class="payment-method-option__radio" aria-hidden="true"></span>
+  <ion-text class="payment-method-option__label">{{ label }}</ion-text>
+  <ion-img [src]="iconSrc" alt="" class="payment-method-option__icon"></ion-img>
+</button>

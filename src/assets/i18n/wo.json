@@ -82,6 +82,44 @@
     "OUT_OF_REGION": "Destination bi nekkul ci gox bi Diourbel.",
     "SEARCH_ERROR": "Mënuloo yeb gis-gis yi. Jéemaatal.",
     "EXPAND_SHEET": "Ubbi seet bi",
-    "COLLAPSE_SHEET": "Wàññi pano bi"
+    "COLLAPSE_SHEET": "Wàññi pano bi",
+    "VEHICLE_MOTO": "Moto kilis kalas",
+    "VEHICLE_AUTO": "Auto kilis kalas",
+    "VEHICLE_DELIVERY": "Yónnee",
+    "ORDER": "Commande"
+  },
+  "PAYMENT": {
+    "TITLE": "Anamu jëfandikoo",
+    "CASH": "Xaalis",
+    "WAVE": "Wave",
+    "ORANGE_MONEY": "Orange money",
+    "CONTINUE": "Kontine"
+  },
+  "RIDE_TRACKING": {
+    "SEARCHING_DRIVER": "Mi ngi seet chauffeur bu am...",
+    "DRIVER_ARRIVING": "Sa chauffeur dina ñëw ci {{minutes}} simili",
+    "ETA": "Waxtu ñëw bi estimé : {{minutes}} simili",
+    "SEND_TRIP": "Yónnee wotu bi",
+    "EMERGENCY": "Woote bu gaaw",
+    "ARRIVED": "Yegg nga ci sa destination",
+    "TRIP_DONE": "Wotu bi jeex na",
+    "DATE": "Bés",
+    "RATE_TRIP": "Evalué wotu bi",
+    "VIEW_DETAILS": "Gis détail yi",
+    "FINISH": "Jeexal",
+    "CANCEL_ORDER": "Annulé commande bi",
+    "CHAT_PLACEHOLDER": "Bind fii",
+    "DEPARTURE": "Départ",
+    "ARRIVAL": "Arrivé"
+  },
+  "RIDE_HISTORY": {
+    "TITLE": "Jaar-jaar",
+    "DURATION": "Waxtu",
+    "DISTANCE": "Distans",
+    "OFFER_TYPE": "Anamu bi",
+    "PRICE": "Pri wotu bi",
+    "PAYMENT_METHOD": "Anamu jëfandikoo",
+    "ORDER_STATUS": "Statut commande bi",
+    "STATUS_SUCCESS": "Jeex na"
   }
 }

@@ -82,6 +82,44 @@
     "OUT_OF_REGION": "Cette destination est hors de la région de Diourbel.",
     "SEARCH_ERROR": "Impossible de charger les résultats. Réessayez.",
     "EXPAND_SHEET": "Ouvrir la recherche",
-    "COLLAPSE_SHEET": "Réduire le panneau"
+    "COLLAPSE_SHEET": "Réduire le panneau",
+    "VEHICLE_MOTO": "Moto kilis kalas",
+    "VEHICLE_AUTO": "Auto kilis kalas",
+    "VEHICLE_DELIVERY": "Livraison",
+    "ORDER": "Commander"
+  },
+  "PAYMENT": {
+    "TITLE": "Méthode de paiement",
+    "CASH": "Espèces",
+    "WAVE": "Wave",
+    "ORANGE_MONEY": "Orange money",
+    "CONTINUE": "Continuer"
+  },
+  "RIDE_TRACKING": {
+    "SEARCHING_DRIVER": "Recherche d'un chauffeur en cours...",
+    "DRIVER_ARRIVING": "Votre chauffeur arrive dans {{minutes}} minutes",
+    "ETA": "Temps d'arrivée estimé : {{minutes}} minutes",
+    "SEND_TRIP": "Envoyer le trajet",
+    "EMERGENCY": "Appel d'urgence",
+    "ARRIVED": "Vous êtes arrivés à destination",
+    "TRIP_DONE": "Course terminé",
+    "DATE": "Date",
+    "RATE_TRIP": "Notez la course",
+    "VIEW_DETAILS": "Voir détails",
+    "FINISH": "Terminer",
+    "CANCEL_ORDER": "Annuler la commande",
+    "CHAT_PLACEHOLDER": "Tapez ici",
+    "DEPARTURE": "Départ",
+    "ARRIVAL": "Arrivé"
+  },
+  "RIDE_HISTORY": {
+    "TITLE": "Historique",
+    "DURATION": "Durée",
+    "DISTANCE": "Distance",
+    "OFFER_TYPE": "Type d'offre",
+    "PRICE": "Prix de la course",
+    "PAYMENT_METHOD": "Mode de paiement",
+    "ORDER_STATUS": "Statut de la commande",
+    "STATUS_SUCCESS": "Réussi"
   }
 }

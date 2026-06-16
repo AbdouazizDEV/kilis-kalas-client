@@ -1,0 +1,53 @@
+.payment {
+  --background: #f3f3f3;
+  font-size: 112.5%;
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 9.73% 5.33% 4%;
+    box-sizing: border-box;
+  }
+
+  &__header-row {
+    margin-bottom: 2rem;
+  }
+
+  &__header-col {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.125rem;
+    padding: 0;
+  }
+
+  &__back-btn {
+    position: absolute;
+    left: 0;
+  }
+
+  &__title {
+    font-family: var(--kk-font-body);
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: #000000;
+  }
+
+  &__options-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 0;
+  }
+
+  &__action-row {
+    margin-top: auto;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+}

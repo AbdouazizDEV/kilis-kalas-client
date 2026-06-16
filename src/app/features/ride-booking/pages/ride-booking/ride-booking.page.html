@@ -1,168 +1,128 @@
-<div class="ride-booking-page">
-  <ion-content [fullscreen]="true" class="ride-booking" [class.ride-booking--route]="showRouteMap">
-    @if (showRouteMap) {
-      <app-ride-map
-        class="ride-booking__map"
-        [pickup]="pickup"
-        [destination]="destination"
-        [suggestions]="mapSuggestions"
-        [interactive]="mapInteractive"
-        [mapSelectionField]="mapSelectionField"
-        (mapClick)="onMapClick($event)"
-      ></app-ride-map>
+<ion-grid class="ride-booking-page">
+  <ion-row class="ride-booking-page__row">
+    <ion-col size="12" class="ride-booking-page__col">
+      <ion-content [fullscreen]="true" class="ride-booking" [class.ride-booking--route]="showRouteMap">
+        @if (showRouteMap) {
+          <app-ride-map
+            class="ride-booking__map"
+            [pickup]="pickup"
+            [destination]="destination"
+            [suggestions]="mapSuggestions"
+            [interactive]="mapInteractive"
+            [mapSelectionField]="mapSelectionField"
+            (mapClick)="onMapClick($event)"
+          ></app-ride-map>
 
-      <div class="ride-booking__map-controls">
-        <app-back-button defaultHref="/home" class="ride-booking__back-btn"></app-back-button>
+          <ion-grid class="ride-booking__map-controls">
+            <ion-row class="ion-align-items-center ion-justify-content-between">
+              <ion-col size="auto">
+                <app-back-button defaultHref="/home" class="ride-booking__back-btn"></app-back-button>
+              </ion-col>
+              <ion-col size="auto">
+                <ion-button
+                  fill="clear"
+                  class="ride-booking__locate-btn"
+                  [attr.aria-label]="'RIDE_BOOKING.CURRENT_POSITION' | translate"
+                  (click)="onLocateMe()"
+                >
+                  <ion-icon name="locate-outline" class="ride-booking__locate-icon"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        } @else {
+          <ion-grid class="ride-booking__layout">
+            <ion-row class="ride-booking__header-row">
+              <ion-col size="12" class="ride-booking__header-col">
+                <app-back-button defaultHref="/home" class="ride-booking__back-btn"></app-back-button>
+                <ion-text class="ride-booking__title">{{ 'RIDE_BOOKING.TITLE' | translate }}</ion-text>
+              </ion-col>
+            </ion-row>
 
-        <ion-button
-          type="button"
-          fill="clear"
-          class="ride-booking__locate-btn"
-          aria-label="Ma position"
-          (click)="onLocateMe()"
-        >
-          <ion-icon name="locate-outline" class="ride-booking__locate-icon"></ion-icon>
-        </ion-button>
-      </div>
-    } @else {
-      <ion-grid class="ride-booking__layout">
-        <ion-row class="ride-booking__header-row">
-          <ion-col size="12" class="ride-booking__header-col">
-            <app-back-button defaultHref="/home" class="ride-booking__back-btn"></app-back-button>
-            <ion-text class="ride-booking__title">{{ 'RIDE_BOOKING.TITLE' | translate }}</ion-text>
-          </ion-col>
-        </ion-row>
-
-        <ion-row class="ride-booking__card-row">
-          <ion-col size="12">
-            <app-route-location-card
-              [pickup]="pickup"
-              [destination]="destination"
-              [activeField]="activeField"
-              [destinationQuery]="destinationQuery"
-              (fieldFocus)="onFieldFocus($event)"
-              (destinationQueryChange)="onDestinationQueryChange($event)"
-            ></app-route-location-card>
-          </ion-col>
-        </ion-row>
-
-        @if (activeField === 'pickup') {
-          <ion-row class="ride-booking__share-row">
-            <ion-col size="12">
-              <ion-button
-                type="button"
-                fill="clear"
-                class="ride-booking__share-btn"
-                (click)="onShareCurrentPosition()"
-              >
-                <ion-icon name="navigate-outline" class="ride-booking__share-icon"></ion-icon>
-                <ion-text>{{ 'RIDE_BOOKING.SHARE_CURRENT_POSITION' | translate }}</ion-text>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        }
-
-        <ion-row class="ride-booking__results-row">
-          <ion-col size="12">
-            <app-ride-search-results
-              [results]="searchResults"
-              [loading]="searchLoading"
-              [showEmpty]="hasSearchQuery && !searchLoading"
-              (placeSelect)="onPlaceSelect($event)"
-            ></app-ride-search-results>
-          </ion-col>
-        </ion-row>
-
-        @if (searchErrorKey) {
-          <ion-row class="ride-booking__error-row">
-            <ion-col size="12">
-              <ion-text class="ride-booking__search-error">{{ searchErrorKey | translate }}</ion-text>
-            </ion-col>
-          </ion-row>
-        }
-
-        <ion-row class="ride-booking__action-row">
-          <ion-col size="12">
-            <app-pill-button [disabled]="!canValidate" (buttonClick)="onValidate()">
-              {{ 'RIDE_BOOKING.VALIDATE' | translate }}
-            </app-pill-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    }
-  </ion-content>
-
-  @if (showRouteMap) {
-    <aside
-      class="ride-booking__sheet"
-      [class.ride-booking__sheet--search]="sheetMode === 'search'"
-      [class.ride-booking__sheet--compact]="sheetMode === 'compact'"
-    >
-      <button
-        type="button"
-        class="ride-booking__sheet-grab"
-        [attr.aria-label]="
-          sheetMode === 'search'
-            ? ('RIDE_BOOKING.COLLAPSE_SHEET' | translate)
-            : ('RIDE_BOOKING.EXPAND_SHEET' | translate)
-        "
-        (click)="toggleSheetMode()"
-      ></button>
-
-      <div class="ride-booking__sheet-scroll">
-        <ion-text class="ride-booking__sheet-title">
-          {{ 'RIDE_BOOKING.CHOOSE_DESTINATION' | translate }}
-        </ion-text>
-
-        @if (sheetMode === 'search') {
-          <div class="ride-booking__sheet-search">
-            <app-route-location-card
-              [pickup]="pickup"
-              [destination]="destination"
-              [activeField]="activeField"
-              [destinationQuery]="destinationQuery"
-              (fieldFocus)="onFieldFocus($event)"
-              (destinationQueryChange)="onDestinationQueryChange($event)"
-            ></app-route-location-card>
+            <ion-row class="ride-booking__card-row">
+              <ion-col size="12">
+                <app-route-location-card
+                  [pickup]="pickup"
+                  [destination]="destination"
+                  [activeField]="activeField"
+                  [destinationQuery]="destinationQuery"
+                  (fieldFocus)="onFieldFocus($event)"
+                  (destinationQueryChange)="onDestinationQueryChange($event)"
+                ></app-route-location-card>
+              </ion-col>
+            </ion-row>
 
             @if (activeField === 'pickup') {
-              <ion-button
-                type="button"
-                fill="clear"
-                class="ride-booking__share-btn"
-                (click)="onShareCurrentPosition()"
-              >
-                <ion-icon name="navigate-outline" class="ride-booking__share-icon"></ion-icon>
-                <ion-text>{{ 'RIDE_BOOKING.SHARE_CURRENT_POSITION' | translate }}</ion-text>
-              </ion-button>
+              <ion-row class="ride-booking__share-row">
+                <ion-col size="12">
+                  <ion-button fill="clear" class="ride-booking__share-btn" (click)="onShareCurrentPosition()">
+                    <ion-icon name="navigate-outline" class="ride-booking__share-icon"></ion-icon>
+                    <ion-text>{{ 'RIDE_BOOKING.SHARE_CURRENT_POSITION' | translate }}</ion-text>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
             }
 
-            <app-ride-search-results
-              [results]="searchResults"
-              [loading]="searchLoading"
-              [showEmpty]="hasSearchQuery && !searchLoading"
-              (placeSelect)="onPlaceSelect($event)"
-            ></app-ride-search-results>
-          </div>
-        } @else {
-          <button type="button" class="ride-booking__sheet-destination" (click)="expandSheetForSearch()">
-            <ion-icon name="location-outline" class="ride-booking__sheet-pin"></ion-icon>
-            <ion-text class="ride-booking__sheet-address">
-              {{ destination?.label || ('RIDE_BOOKING.SEARCH_PLACEHOLDER' | translate) }}
-            </ion-text>
-          </button>
-        }
+            <ion-row class="ride-booking__results-row">
+              <ion-col size="12">
+                <app-ride-search-results
+                  [results]="searchResults"
+                  [loading]="searchLoading"
+                  [showEmpty]="hasSearchQuery && !searchLoading"
+                  (placeSelect)="onPlaceSelect($event)"
+                ></app-ride-search-results>
+              </ion-col>
+            </ion-row>
 
-        @if (searchErrorKey) {
-          <ion-text class="ride-booking__search-error">{{ searchErrorKey | translate }}</ion-text>
-        }
-      </div>
+            @if (searchErrorKey) {
+              <ion-row class="ride-booking__error-row">
+                <ion-col size="12">
+                  <ion-text class="ride-booking__search-error">{{ searchErrorKey | translate }}</ion-text>
+                </ion-col>
+              </ion-row>
+            }
 
-      <div class="ride-booking__sheet-footer">
-        <app-pill-button [disabled]="!canValidate" (buttonClick)="onValidate()">
-          {{ 'RIDE_BOOKING.VALIDATE' | translate }}
-        </app-pill-button>
-      </div>
-    </aside>
-  }
-</div>
+            <ion-row class="ride-booking__action-row">
+              <ion-col size="12">
+                <app-pill-button [disabled]="!canValidate" (buttonClick)="onValidate()">
+                  {{ 'RIDE_BOOKING.VALIDATE' | translate }}
+                </app-pill-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        }
+      </ion-content>
+
+      @if (showRouteMap) {
+        <app-ride-booking-sheet
+          [phase]="phase"
+          [sheetMode]="sheetMode"
+          [pickup]="pickup"
+          [destination]="destination"
+          [destinationQuery]="destinationQuery"
+          [activeField]="activeField"
+          [searchResults]="searchResults"
+          [searchLoading]="searchLoading"
+          [hasSearchQuery]="hasSearchQuery"
+          [searchErrorKey]="searchErrorKey"
+          [vehicleOptions]="vehicleOptions"
+          [selectedVehicle]="selectedVehicle"
+          [paymentMethodIcon]="paymentMethodIcon"
+          [canValidate]="canValidate"
+          [estimateLoading]="estimateLoading"
+          [orderLoading]="orderLoading"
+          (sheetToggle)="toggleSheetMode()"
+          (expandSearch)="expandSheetForSearch()"
+          (fieldFocus)="onFieldFocus($event)"
+          (destinationQueryChange)="onDestinationQueryChange($event)"
+          (shareCurrentPosition)="onShareCurrentPosition()"
+          (placeSelect)="onPlaceSelect($event)"
+          (vehicleSelect)="onVehicleSelect($event)"
+          (openPayment)="onOpenPayment()"
+          (order)="onOrder()"
+          (validate)="onValidate()"
+        ></app-ride-booking-sheet>
+      }
+    </ion-col>
+  </ion-row>
+</ion-grid>

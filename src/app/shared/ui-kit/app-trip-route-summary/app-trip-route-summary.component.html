@@ -1,0 +1,22 @@
+<ion-grid class="trip-route-summary">
+  <ion-row class="trip-route-summary__row">
+    <ion-col size="auto" class="trip-route-summary__track-col">
+      <div class="trip-route-summary__track">
+        <span class="trip-route-summary__pickup-dot" aria-hidden="true"></span>
+        <span class="trip-route-summary__connector" aria-hidden="true"></span>
+        <ion-icon name="location" class="trip-route-summary__destination-icon" aria-hidden="true"></ion-icon>
+      </div>
+    </ion-col>
+
+    <ion-col class="trip-route-summary__labels-col">
+      <div class="trip-route-summary__line">
+        <ion-text class="trip-route-summary__label">{{ 'RIDE_TRACKING.DEPARTURE' | translate }}</ion-text>
+        <ion-text class="trip-route-summary__value">{{ pickupLabel }}</ion-text>
+      </div>
+      <div class="trip-route-summary__line">
+        <ion-text class="trip-route-summary__label">{{ 'RIDE_TRACKING.ARRIVAL' | translate }}</ion-text>
+        <ion-text class="trip-route-summary__value">{{ destinationLabel }}</ion-text>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

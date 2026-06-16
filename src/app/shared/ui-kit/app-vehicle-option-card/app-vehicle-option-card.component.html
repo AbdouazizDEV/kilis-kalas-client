@@ -1,0 +1,12 @@
+<button
+  type="button"
+  class="vehicle-option-card"
+  [class.vehicle-option-card--selected]="selected"
+  (click)="onSelect()"
+>
+  <div class="vehicle-option-card__media">
+    <ion-img [src]="iconSrc" alt="" class="vehicle-option-card__icon"></ion-img>
+  </div>
+  <ion-text class="vehicle-option-card__price">{{ formatPrice() }} FCFA</ion-text>
+  <ion-text class="vehicle-option-card__label">{{ labelKey | translate }}</ion-text>
+</button>

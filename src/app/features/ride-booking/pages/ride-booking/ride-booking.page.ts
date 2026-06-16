@@ -21,17 +21,30 @@ import {
 import { addIcons } from 'ionicons';
 import { locateOutline, location, locationOutline, navigateOutline } from 'ionicons/icons';
 import { isWithinDiourbelRegion } from '../../../../core/constants/diourbel-region';
+import { RIDE_REPOSITORY } from '../../../../core/tokens/ride.token';
 import { GEOLOCATION_SERVICE } from '../../../../core/tokens/geolocation.token';
+import { PaymentMethodType } from '../../../../models/payment.model';
 import { LocationPlace, LocationSelection, RouteField } from '../../../../models/location.model';
+import { VehicleOption, VehicleType } from '../../../../models/ride.model';
 import { LocationSearchService } from '../../../../services/location/location-search.service';
+import { RideBookingStateService } from '../../../../services/ride/ride-booking-state.service';
 import { AppBackButtonComponent } from '../../../../shared/ui-kit/app-back-button/app-back-button.component';
 import { AppPillButtonComponent } from '../../../../shared/ui-kit/app-pill-button/app-pill-button.component';
 import { AppRideMapComponent } from '../../../../shared/ui-kit/app-ride-map/app-ride-map.component';
+import {
+  BookingPhase,
+  RideBookingSheetComponent,
+  SheetMode,
+} from '../../components/ride-booking-sheet/ride-booking-sheet.component';
 import { RouteLocationCardComponent } from '../../components/route-location-card/route-location-card.component';
 import { RideSearchResultsComponent } from '../../components/ride-search-results/ride-search-results.component';
 
-type BookingPhase = 'search' | 'route';
-type SheetMode = 'compact' | 'search';
+const PAYMENT_METHOD_ICONS: Record<PaymentMethodType, string> = {
+  cash: 'assets/icons/cashMoney.svg',
+  wave: 'assets/icons/logoWave.svg',
+  orange_money: 'assets/icons/OrangeMoney.svg',
+  card: 'assets/icons/cashMoney.svg',
+};
 
 const BAMBey_CENTER: LocationSelection = {
   label: 'Bambey',
@@ -54,6 +67,7 @@ const BAMBey_CENTER: LocationSelection = {
     AppBackButtonComponent,
     AppPillButtonComponent,
     AppRideMapComponent,
+    RideBookingSheetComponent,
     RouteLocationCardComponent,
     RideSearchResultsComponent,
   ],
@@ -66,6 +80,8 @@ export class RideBookingPage implements OnInit, OnDestroy {
   private readonly translate = inject(TranslateService);
   private readonly geolocation = inject(GEOLOCATION_SERVICE);
   private readonly locationSearch = inject(LocationSearchService);
+  private readonly bookingState = inject(RideBookingStateService);
+  private readonly rideRepository = inject(RIDE_REPOSITORY);
   private readonly destroy$ = new Subject<void>();
   private readonly searchQuery$ = new Subject<string>();
 
@@ -83,7 +99,14 @@ export class RideBookingPage implements OnInit, OnDestroy {
   searchLoading = false;
   searchErrorKey: string | null = null;
   mapSelectionField: RouteField | null = null;
-  isDeliveryMode = false;
+  selectedVehicle: VehicleType = 'moto';
+  estimateLoading = false;
+  orderLoading = false;
+
+  readonly vehicleOptions: VehicleOption[] = [
+    { type: 'moto', labelKey: 'RIDE_BOOKING.VEHICLE_MOTO', iconSrc: 'assets/icon/Motorcycle.svg', priceXof: 2000 },
+    { type: 'auto', labelKey: 'RIDE_BOOKING.VEHICLE_AUTO', iconSrc: 'assets/icon/Auto.svg', priceXof: 2500 },
+  ];
 
   constructor() {
     addIcons({ locationOutline, location, locateOutline, navigateOutline });
@@ -92,12 +115,15 @@ export class RideBookingPage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.queryParamMap.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       const mode = params.get('mode');
-      this.isDeliveryMode = mode === 'delivery';
 
       if (mode === 'map') {
         this.phase = 'route';
         this.activeField = 'destination';
         this.mapSelectionField = 'destination';
+      }
+
+      if (params.get('phase') === 'vehicle') {
+        this.restoreVehiclePhase();
       }
     });
 
@@ -142,15 +168,24 @@ export class RideBookingPage implements OnInit, OnDestroy {
   }
 
   get showRouteMap(): boolean {
-    return this.phase === 'route';
+    return this.phase === 'route' || this.phase === 'vehicle';
   }
 
   get mapInteractive(): boolean {
+    if (this.phase === 'vehicle') {
+      return true;
+    }
+
     return this.sheetMode === 'compact' || this.mapSelectionField !== null;
   }
 
   get hasSearchQuery(): boolean {
     return Boolean(this.getActiveSearchQuery().trim());
+  }
+
+  get paymentMethodIcon(): string {
+    const method = this.bookingState.session.paymentMethod ?? 'wave';
+    return PAYMENT_METHOD_ICONS[method];
   }
 
   onFieldFocus(field: RouteField): void {
@@ -207,8 +242,59 @@ export class RideBookingPage implements OnInit, OnDestroy {
       return;
     }
 
-    this.locationSearch.resetSession();
-    void this.router.navigateByUrl('/ride-tracking');
+    if (this.phase === 'route') {
+      this.openVehicleSelection();
+      return;
+    }
+  }
+
+  onOpenPayment(): void {
+    this.persistSession();
+    void this.router.navigateByUrl('/payment');
+  }
+
+  onVehicleSelect(type: VehicleType): void {
+    this.selectedVehicle = type;
+    this.bookingState.setVehicleType(type);
+    this.loadEstimate();
+  }
+
+  onOrder(): void {
+    if (this.orderLoading || this.estimateLoading || !this.pickup || !this.destination) {
+      return;
+    }
+
+    this.persistSession();
+    this.orderLoading = true;
+
+    const paymentMethod = this.bookingState.session.paymentMethod ?? 'wave';
+
+    this.rideRepository
+      .requestRide({
+        pickup: {
+          latitude: this.pickup.latitude,
+          longitude: this.pickup.longitude,
+          address: this.pickup.label,
+        },
+        destination: {
+          latitude: this.destination.latitude,
+          longitude: this.destination.longitude,
+          address: this.destination.label,
+        },
+        vehicleType: this.selectedVehicle,
+        paymentMethodId: paymentMethod,
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (ride) => {
+          this.bookingState.setRide(ride);
+          this.orderLoading = false;
+          void this.router.navigateByUrl('/ride-tracking');
+        },
+        error: () => {
+          this.orderLoading = false;
+        },
+      });
   }
 
   onMapClick(coords: google.maps.LatLngLiteral): void {
@@ -302,6 +388,80 @@ export class RideBookingPage implements OnInit, OnDestroy {
     if (this.phase === 'route') {
       this.collapseSheet();
     }
+  }
+
+  private openVehicleSelection(): void {
+    this.phase = 'vehicle';
+    this.sheetMode = 'compact';
+    this.mapSelectionField = null;
+    this.persistSession();
+    this.loadEstimate();
+  }
+
+  private restoreVehiclePhase(): void {
+    const session = this.bookingState.session;
+
+    if (!session.pickup || !session.destination) {
+      return;
+    }
+
+    this.pickup = session.pickup;
+    this.destination = session.destination;
+    this.destinationQuery = session.destination.label;
+    this.selectedVehicle = session.vehicleType === 'delivery' ? 'moto' : session.vehicleType;
+    this.phase = 'vehicle';
+    this.sheetMode = 'compact';
+    this.mapSelectionField = null;
+    this.loadEstimate();
+  }
+
+  private persistSession(): void {
+    if (this.pickup) {
+      this.bookingState.setPickup(this.pickup);
+    }
+
+    if (this.destination) {
+      this.bookingState.setDestination(this.destination);
+    }
+
+    this.bookingState.setVehicleType(this.selectedVehicle);
+  }
+
+  private loadEstimate(): void {
+    if (!this.pickup || !this.destination) {
+      return;
+    }
+
+    this.estimateLoading = true;
+
+    this.rideRepository
+      .estimateRide({
+        pickup: {
+          latitude: this.pickup.latitude,
+          longitude: this.pickup.longitude,
+          address: this.pickup.label,
+        },
+        destination: {
+          latitude: this.destination.latitude,
+          longitude: this.destination.longitude,
+          address: this.destination.label,
+        },
+        vehicleType: this.selectedVehicle,
+      })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (estimate) => {
+          this.estimateLoading = false;
+          this.bookingState.setEstimate(estimate);
+          const option = this.vehicleOptions.find((item) => item.type === this.selectedVehicle);
+          if (option) {
+            option.priceXof = estimate.priceXof;
+          }
+        },
+        error: () => {
+          this.estimateLoading = false;
+        },
+      });
   }
 
   private openRouteView(): void {

@@ -1,0 +1,284 @@
+:host {
+  display: block;
+}
+
+.ride-booking-sheet {
+  --sheet-pad-x: 5.33%;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #f9f9f9;
+  border-radius: 60px 60px 0 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: height 0.28s ease;
+
+  &::before {
+    display: none;
+  }
+
+  &--compact {
+    height: 17.75rem;
+    max-height: 42vh;
+  }
+
+  &--search {
+    height: min(72vh, 34rem);
+    max-height: 88vh;
+  }
+
+  &--vehicle {
+    height: min(58vh, 28rem);
+    max-height: 62vh;
+  }
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  &__grab-row {
+    flex: 1 0 auto;
+  }
+
+  &__grab-col {
+    display: flex;
+    justify-content: center;
+    padding: 0.8125rem 0 0.5rem;
+  }
+
+  &__grab {
+    --background: rgba(0, 0, 0, 0.18);
+    --background-hover: rgba(0, 0, 0, 0.24);
+    --background-activated: rgba(0, 0, 0, 0.28);
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    --border-radius: 999px;
+    width: 3rem;
+    height: 0.25rem;
+    min-height: 0.25rem;
+    margin: 0;
+  }
+
+  &__scroll-row {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__scroll-col {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 var(--sheet-pad-x);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: var(--kk-font-body);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.25;
+    color: #000000;
+    text-align: center;
+  }
+
+  &__search {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  &__share-btn {
+    --background: transparent;
+    --background-hover: rgba(0, 0, 0, 0.04);
+    --background-activated: rgba(0, 0, 0, 0.08);
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    display: flex;
+    align-items: center;
+    gap: 2.67%;
+    margin: 0;
+    text-transform: none;
+  }
+
+  &__share-icon {
+    font-size: 1.25rem;
+    color: #000000;
+  }
+
+  &__share-btn ion-text {
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: #000000;
+  }
+
+  &__destination {
+    --background: transparent;
+    --background-hover: rgba(0, 0, 0, 0.04);
+    --background-activated: rgba(0, 0, 0, 0.08);
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    justify-content: flex-start;
+    margin-top: 0.25rem;
+    padding: 0 0 0.625rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+    text-transform: none;
+  }
+
+  &__pin {
+    flex-shrink: 0;
+    font-size: 1.5625rem;
+    color: #000000;
+  }
+
+  &__address {
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.25;
+    color: #000000;
+    text-align: left;
+  }
+
+  &__search-error {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    color: #b45309;
+  }
+
+  &__footer-row {
+    flex: 0 0 auto;
+  }
+
+  &__footer-col {
+    padding: 0.75rem var(--sheet-pad-x) calc(1rem + env(safe-area-inset-bottom));
+    background: #f9f9f9;
+
+    .app-pill-button {
+      --border-radius: 100px;
+      --box-shadow: 0 8px 22px rgba(16, 185, 129, 0.28);
+      min-height: 3.25rem;
+      width: 100%;
+    }
+  }
+
+  &__vehicle-panel {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+
+    &--enter {
+      animation: rbs-slide-up 0.35s ease;
+    }
+  }
+
+  &__vehicle-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.875rem;
+    padding: 0.25rem 0.125rem 0.5rem;
+    margin-top: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    ion-col {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: none;
+      padding: 0;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__order-grid {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+  }
+
+  &__order-row {
+    flex-wrap: nowrap;
+    gap: 0.625rem;
+  }
+
+  &__payment-col {
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  &__payment-btn {
+    --background: transparent;
+    --background-hover: rgba(0, 0, 0, 0.04);
+    --background-activated: rgba(0, 0, 0, 0.08);
+    --box-shadow: none;
+    --padding-start: 0;
+    --padding-end: 0;
+    --border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin: 0;
+  }
+
+  &__payment-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+  }
+
+  &__order-col {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 3.375rem);
+    padding: 0;
+
+    .app-pill-button {
+      width: 100%;
+      min-width: 0;
+      --box-shadow: 0 8px 22px rgba(16, 185, 129, 0.28);
+    }
+  }
+}
+
+@keyframes rbs-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .ride-booking-sheet {
+    left: 50%;
+    max-width: 28rem;
+    transform: translateX(-50%);
+  }
+}
