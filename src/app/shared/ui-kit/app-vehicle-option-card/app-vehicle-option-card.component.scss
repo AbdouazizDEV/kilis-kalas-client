@@ -1,17 +1,18 @@
 .vehicle-option-card {
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.375rem;
+  --background: rgba(16, 185, 129, 0.08);
+  --background-hover: rgba(16, 185, 129, 0.12);
+  --background-activated: rgba(16, 185, 129, 0.14);
+  --box-shadow: none;
+  --ripple-color: rgba(16, 185, 129, 0.16);
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 1rem;
   width: 7.5rem;
   min-height: 8.75rem;
-  padding: 0.75rem 0.5rem;
+  margin: 0;
   border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: 1rem;
-  background: rgba(16, 185, 129, 0.08);
-  cursor: pointer;
+  text-transform: none;
   transition:
     transform 0.22s ease,
     border-color 0.22s ease,
@@ -23,40 +24,56 @@
   }
 
   &--selected {
+    --background: rgba(16, 185, 129, 0.16);
+    --background-hover: rgba(16, 185, 129, 0.18);
+    --background-activated: rgba(16, 185, 129, 0.2);
     border-color: #10b981;
-    background: rgba(16, 185, 129, 0.16);
     box-shadow: 0 8px 24px rgba(16, 185, 129, 0.18);
     transform: translateY(-2px);
   }
 
-  &__media {
+  &::part(native) {
+    width: 100%;
+    height: 100%;
+    min-height: 8.75rem;
+    padding: 0.75rem 0.5rem;
+    border-radius: 1rem;
+  }
+
+  &__content {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  &__media-col {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     min-height: 3rem;
+    padding: 0 0 0.375rem;
   }
 
   &__icon {
     width: 3.25rem;
     height: auto;
     object-fit: contain;
-  }
-
-  &__auto-icon {
-    font-size: 2.75rem;
-    color: #f5c518;
+    display: block;
   }
 
   &__price {
+    display: block;
     font-family: var(--kk-font-body);
     font-weight: 700;
     font-size: 0.9375rem;
     line-height: 1.2;
     color: #000000;
+    text-align: center;
   }
 
   &__label {
+    display: block;
     font-family: var(--kk-font-body);
     font-weight: 400;
     font-style: italic;

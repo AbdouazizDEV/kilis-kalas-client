@@ -1,39 +1,63 @@
 .payment-method-option {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
+  --background: #ffffff;
+  --background-hover: #fafafa;
+  --background-activated: #f5f5f5;
+  --box-shadow: none;
+  --ripple-color: rgba(16, 185, 129, 0.12);
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 0.875rem;
   width: 100%;
   min-height: 4.375rem;
-  padding: 0.875rem 1rem;
+  margin: 0 0 0.75rem;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 0.875rem;
-  background: #ffffff;
-  text-align: left;
-  cursor: pointer;
+  text-transform: none;
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
     transform 0.2s ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &:active {
     transform: scale(0.99);
   }
 
   &--selected {
+    --background: rgba(16, 185, 129, 0.08);
+    --background-hover: rgba(16, 185, 129, 0.1);
+    --background-activated: rgba(16, 185, 129, 0.12);
     border-color: #10b981;
-    background: rgba(16, 185, 129, 0.08);
   }
 
-  &__radio {
+  &::part(native) {
+    width: 100%;
+    min-height: 4.375rem;
+    padding: 0.875rem 1rem;
+    border-radius: 0.875rem;
+  }
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  &__radio-col {
     position: relative;
     flex-shrink: 0;
     width: 1.125rem;
     height: 1.125rem;
+    padding: 0;
     border: 1.5px solid rgba(0, 0, 0, 0.45);
     border-radius: 50%;
   }
 
-  &--selected &__radio {
+  &--selected &__radio-col {
     border-color: #10b981;
 
     &::after {
@@ -45,19 +69,29 @@
     }
   }
 
+  &__label-col {
+    padding: 0 0.875rem;
+    min-width: 0;
+  }
+
   &__label {
-    flex: 1 1 auto;
+    display: block;
     font-family: var(--kk-font-body);
     font-weight: 500;
     font-size: 1rem;
     line-height: 1.25;
     color: #000000;
+    text-align: left;
+  }
+
+  &__icon-col {
+    padding: 0;
   }
 
   &__icon {
-    flex-shrink: 0;
     width: 2.5rem;
     height: 2.5rem;
     object-fit: contain;
+    display: block;
   }
 }

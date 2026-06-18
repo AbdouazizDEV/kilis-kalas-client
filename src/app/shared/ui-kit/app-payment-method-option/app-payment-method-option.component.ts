@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IonImg, IonText } from '@ionic/angular/standalone';
+import { IonButton, IonCol, IonGrid, IonImg, IonRow, IonText } from '@ionic/angular/standalone';
 import { PaymentMethodType } from '../../../models/payment.model';
 
 @Component({
   selector: 'app-payment-method-option',
   standalone: true,
-  imports: [IonImg, IonText],
+  imports: [IonButton, IonGrid, IonRow, IonCol, IonImg, IonText],
   templateUrl: './app-payment-method-option.component.html',
   styleUrls: ['./app-payment-method-option.component.scss'],
 })

@@ -4,8 +4,10 @@ import {
   IonButton,
   IonCol,
   IonContent,
+  IonFooter,
   IonGrid,
   IonIcon,
+  IonImg,
   IonRow,
   IonText,
 } from '@ionic/angular/standalone';
@@ -57,11 +59,13 @@ const BAMBey_CENTER: LocationSelection = {
   standalone: true,
   imports: [
     IonContent,
+    IonFooter,
     IonGrid,
     IonRow,
     IonCol,
     IonButton,
     IonIcon,
+    IonImg,
     IonText,
     TranslatePipe,
     AppBackButtonComponent,
@@ -336,26 +340,31 @@ export class RideBookingPage implements OnInit, OnDestroy {
 
   toggleSheetMode(): void {
     this.sheetMode = this.sheetMode === 'compact' ? 'search' : 'compact';
+    this.applySheetModeSideEffects();
+  }
 
+  expandSheet(): void {
     if (this.sheetMode === 'search') {
+      return;
+    }
+
+    this.sheetMode = 'search';
+    this.applySheetModeSideEffects();
+  }
+
+  collapseSheet(): void {
+    this.sheetMode = 'compact';
+    this.mapSelectionField = 'destination';
+  }
+
+  private applySheetModeSideEffects(): void {
+    if (this.phase === 'route' && this.sheetMode === 'search') {
       this.activeField = 'destination';
       this.mapSelectionField = 'destination';
       this.triggerSearch(this.destinationQuery);
       return;
     }
 
-    this.mapSelectionField = 'destination';
-  }
-
-  expandSheetForSearch(): void {
-    this.sheetMode = 'search';
-    this.activeField = 'destination';
-    this.mapSelectionField = 'destination';
-    this.triggerSearch(this.destinationQuery);
-  }
-
-  collapseSheet(): void {
-    this.sheetMode = 'compact';
     this.mapSelectionField = 'destination';
   }
 
@@ -387,12 +396,17 @@ export class RideBookingPage implements OnInit, OnDestroy {
 
     if (this.phase === 'route') {
       this.collapseSheet();
+      return;
+    }
+
+    if (this.phase === 'search' && this.pickup) {
+      this.openRouteView();
     }
   }
 
   private openVehicleSelection(): void {
     this.phase = 'vehicle';
-    this.sheetMode = 'compact';
+    this.sheetMode = 'search';
     this.mapSelectionField = null;
     this.persistSession();
     this.loadEstimate();

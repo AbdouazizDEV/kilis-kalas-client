@@ -19,7 +19,7 @@
   } @else if (showEmpty && !results.length) {
     <ion-row>
       <ion-col size="12">
-        <ion-text class="ride-search-results__status">{{
+        <ion-text class="ride-search-results__status ride-search-results__status--empty">{{
           'RIDE_BOOKING.NO_RESULTS' | translate
         }}</ion-text>
       </ion-col>
@@ -28,10 +28,31 @@
     <ion-row class="ride-search-results__list">
       @for (place of results; track place.id) {
         <ion-col size="12">
-          <button type="button" class="ride-search-results__item" (click)="placeSelect.emit(place)">
-            <ion-icon name="location" class="ride-search-results__icon"></ion-icon>
-            <ion-text class="ride-search-results__label">{{ place.label }}</ion-text>
-          </button>
+          <ion-button
+            type="button"
+            fill="clear"
+            expand="block"
+            class="ride-search-results__item"
+            (click)="placeSelect.emit(place)"
+          >
+            <ion-grid class="ride-search-results__item-grid">
+              <ion-row class="ion-align-items-center">
+                <ion-col size="auto" class="ride-search-results__icon-col">
+                  <ion-img
+                    src="assets/icon/pin-location.svg"
+                    alt=""
+                    class="ride-search-results__icon"
+                  ></ion-img>
+                </ion-col>
+                <ion-col class="ride-search-results__label-col">
+                  <ion-text class="ride-search-results__label">{{ place.label }}</ion-text>
+                </ion-col>
+                <ion-col size="auto" class="ride-search-results__chevron-col">
+                  <ion-icon name="chevron-forward-outline" class="ride-search-results__chevron"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-button>
         </ion-col>
       }
     </ion-row>

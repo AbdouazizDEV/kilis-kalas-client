@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   IonCol,
   IonContent,
@@ -33,7 +32,6 @@ import { AppTripRouteSummaryComponent } from '../../../../shared/ui-kit/app-trip
   styleUrls: ['./ride-history.page.scss'],
 })
 export class RideHistoryPage implements OnInit {
-  private readonly router = inject(Router);
   private readonly translate = inject(TranslateService);
   private readonly bookingState = inject(RideBookingStateService);
 
@@ -52,8 +50,38 @@ export class RideHistoryPage implements OnInit {
     this.vehicleType = session.vehicleType ?? this.ride?.vehicleType ?? 'moto';
 
     if (!this.ride) {
-      void this.router.navigateByUrl('/home');
+      this.ride = this.createFallbackRide();
+      this.pickupLabel = this.ride.pickup.address ?? 'Bambey Centre';
+      this.destinationLabel = this.ride.destination.address ?? 'Université de Bambey';
     }
+  }
+
+  private createFallbackRide(): Ride {
+    return {
+      id: 'ride-demo',
+      passengerId: 'current-user',
+      reference: 'AA-000-AA',
+      status: 'completed',
+      vehicleType: 'moto',
+      pickup: { latitude: 14.6937, longitude: -16.4441, address: 'Bambey Centre' },
+      destination: { latitude: 14.7012, longitude: -16.4312, address: 'Université de Bambey' },
+      estimate: { distanceKm: 3.5, durationMinutes: 8, priceXof: 2000, currency: 'XOF' },
+      driver: {
+        id: 'driver-1',
+        name: 'Moussa Diop',
+        phone: '+221771112233',
+        rating: 4.8,
+        vehicle: {
+          plate: 'AA-000-AA',
+          model: 'Moto',
+          color: 'Verte',
+          type: 'moto',
+          iconSrc: 'assets/icon/Motorcycle.svg',
+        },
+      },
+      createdAt: new Date('2025-10-18'),
+      completedAt: new Date('2025-10-18'),
+    };
   }
 
   get driverName(): string {

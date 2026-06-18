@@ -1,16 +1,26 @@
 <ion-grid class="route-location-card">
   <ion-row class="route-location-card__row">
     <ion-col size="auto" class="route-location-card__track-col">
-      <div class="route-location-card__track">
-        <span class="route-location-card__pickup-dot" aria-hidden="true"></span>
-        <span class="route-location-card__connector" aria-hidden="true"></span>
-        <ion-icon name="location-outline" class="route-location-card__destination-icon" aria-hidden="true"></ion-icon>
-      </div>
+      <ion-grid class="route-location-card__track">
+        <ion-row class="route-location-card__track-inner">
+          <ion-col size="auto" class="route-location-card__pickup-dot-col" aria-hidden="true"></ion-col>
+          <ion-col size="auto" class="route-location-card__connector-col" aria-hidden="true"></ion-col>
+          <ion-col size="auto" class="route-location-card__destination-icon-col" aria-hidden="true">
+            <ion-img
+              src="assets/icon/pin-location.svg"
+              alt=""
+              class="route-location-card__destination-icon"
+            ></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-col>
 
     <ion-col class="route-location-card__fields-col">
-      <button
+      <ion-button
         type="button"
+        fill="clear"
+        expand="block"
         class="route-location-card__field"
         [class.route-location-card__field--active]="activeField === 'pickup'"
         (click)="onFieldClick('pickup')"
@@ -26,31 +36,38 @@
                 : ('RIDE_BOOKING.CURRENT_POSITION' | translate))
           }}
         </ion-text>
-      </button>
+      </ion-button>
 
-      <div
-        class="route-location-card__field route-location-card__field--destination"
-        [class.route-location-card__field--active]="activeField === 'destination'"
-        (click)="onFieldClick('destination')"
-      >
-        @if (activeField === 'destination') {
+      @if (activeField === 'destination') {
+        <ion-item
+          lines="none"
+          class="route-location-card__field route-location-card__field--destination route-location-card__field--active"
+          (click)="onFieldClick('destination')"
+        >
           @if (!destination) {
-            <span class="route-location-card__cursor" aria-hidden="true">|</span>
+            <ion-text class="route-location-card__cursor" aria-hidden="true">|</ion-text>
           }
-          <input
-            type="text"
+          <ion-input
             class="route-location-card__input"
             [value]="destinationQuery"
             [placeholder]="'RIDE_BOOKING.SEARCH_PLACEHOLDER' | translate"
-            (input)="onDestinationInput($event)"
+            (ionInput)="onDestinationInput($event)"
             (click)="$event.stopPropagation()"
-          />
-        } @else {
+          ></ion-input>
+        </ion-item>
+      } @else {
+        <ion-button
+          type="button"
+          fill="clear"
+          expand="block"
+          class="route-location-card__field route-location-card__field--destination"
+          (click)="onFieldClick('destination')"
+        >
           <ion-text class="route-location-card__field-text route-location-card__field-text--filled">
             {{ destination?.label || ('RIDE_BOOKING.SEARCH_PLACEHOLDER' | translate) }}
           </ion-text>
-        }
-      </div>
+        </ion-button>
+      }
     </ion-col>
   </ion-row>
 </ion-grid>

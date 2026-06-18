@@ -1,0 +1,105 @@
+<ion-content [fullscreen]="true" class="profile">
+  <ion-grid class="profile__layout">
+    <ion-row class="profile__hero-row">
+      <ion-col size="12" class="profile__hero-col">
+        <ion-grid class="profile__hero">
+          <ion-row>
+            <ion-col size="12" class="profile__hero-top">
+              <ion-button
+                type="button"
+                fill="clear"
+                class="profile__back-btn"
+                [attr.aria-label]="backLabel()"
+                (click)="onBack()"
+              >
+                <ion-img src="assets/icon/flesh.svg" alt="" class="profile__back-icon"></ion-img>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="profile__avatar-row">
+      <ion-col size="12" class="profile__avatar-col">
+        <ion-grid class="profile__avatar-wrap">
+          <ion-row>
+            <ion-col size="12" class="profile__avatar-main-col">
+              <app-avatar [name]="fullName" [src]="avatarSrc" size="lg" class="profile__avatar"></app-avatar>
+              <ion-button
+                type="button"
+                fill="clear"
+                class="profile__edit-btn"
+                [attr.aria-label]="editAvatarLabel()"
+                (click)="onEditAvatar()"
+              >
+                <ion-img src="assets/icons/cuida_edit-outline.svg" alt="" class="profile__edit-icon"></ion-img>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-text class="profile__user-name">{{ fullName }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="profile__form-row">
+      <ion-col size="12">
+        <form [formGroup]="form" class="profile__form" (ngSubmit)="onSave()">
+          <ion-grid class="profile__fields">
+            <ion-row>
+              <ion-col size="12">
+                <ion-item class="profile__field" lines="none">
+                  <ion-input formControlName="firstName" type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12">
+                <ion-item class="profile__field" lines="none">
+                  <ion-input formControlName="lastName" type="text"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12">
+                <ion-item class="profile__field" lines="none">
+                  <ion-input formControlName="email" type="email"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="profile__phone-row ion-align-items-center">
+              <ion-col size="auto" class="profile__dial-col">
+                <ion-item class="profile__field profile__field--dial" lines="none">
+                  <ion-img slot="start" src="assets/icons/senegal-flag.svg" alt="" class="profile__flag"></ion-img>
+                  <ion-text class="profile__dial-code">+221</ion-text>
+                </ion-item>
+              </ion-col>
+              <ion-col class="profile__phone-col">
+                <ion-item class="profile__field profile__field--phone" lines="none">
+                  <ion-input formControlName="phone" type="tel"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="profile__footer">
+  <ion-toolbar class="profile__footer-toolbar">
+    <ion-button
+      type="button"
+      expand="block"
+      class="profile__save-btn"
+      [disabled]="saving"
+      (click)="onSave()"
+    >
+      <ion-text class="profile__save-label">{{ saveLabel() }}</ion-text>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

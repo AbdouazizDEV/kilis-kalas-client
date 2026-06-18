@@ -1,0 +1,164 @@
+.help {
+  --background: #f9f9f9;
+
+  &__layout {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+    max-width: 23.4375rem;
+    margin: 0 auto;
+    padding: calc(0.75rem + env(safe-area-inset-top)) 0 calc(1.5rem + env(safe-area-inset-bottom));
+    box-sizing: border-box;
+  }
+
+  &__header-row {
+    padding: 0 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  &__header-col {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.125rem;
+    padding: 0;
+  }
+
+  &__back-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  &__title {
+    font-family: var(--kk-font-body);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    color: #000000;
+    text-align: center;
+  }
+
+  &__tabs-row {
+    margin: 0;
+  }
+
+  &__tabs-col {
+    padding: 0;
+  }
+
+  &__segment {
+    --background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 0;
+    padding: 0;
+  }
+
+  &__segment-btn {
+    --color: rgba(0, 0, 0, 0.66);
+    --color-checked: var(--kk-brand-green, #10b981);
+    --indicator-color: var(--kk-brand-green, #10b981);
+    --indicator-height: 3px;
+    --indicator-box-shadow: none;
+    min-height: 3.5rem;
+    font-family: var(--kk-font-body);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    text-transform: none;
+  }
+
+  &__content-row {
+    margin-top: 1.5rem;
+    padding: 0 1.125rem;
+  }
+
+  &__accordion-group {
+    width: 100%;
+    background: transparent;
+  }
+
+  &__accordion {
+    margin-bottom: 0.75rem;
+    background: #fdfefe;
+    border-radius: 1.0625rem;
+    overflow: hidden;
+  }
+
+  &__faq-header {
+    --background: #fdfefe;
+    --padding-start: 1.25rem;
+    --padding-end: 1.25rem;
+    --inner-padding-end: 0;
+    --min-height: 3rem;
+  }
+
+  &__faq-question {
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: #000000;
+    white-space: normal;
+  }
+
+  &__faq-chevron {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.42);
+    transform: rotate(90deg);
+  }
+
+  &__faq-content {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+    padding: 0 1.25rem 1rem;
+  }
+
+  &__faq-answer {
+    display: block;
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.72);
+    text-align: left;
+  }
+
+  &__contact-card {
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 100%;
+    padding: 1.25rem;
+    background: #fdfefe;
+    border-radius: 1.0625rem;
+    box-shadow: 0 0.25rem 1.25rem rgba(15, 23, 42, 0.06);
+  }
+
+  &__contact-intro {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: var(--kk-font-body);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: #000000;
+  }
+
+  &__contact-line {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--kk-font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--kk-brand-green, #10b981);
+  }
+}
+
+:host ::ng-deep .help__accordion.accordion-expanding .help__faq-chevron,
+:host ::ng-deep .help__accordion.accordion-expanded .help__faq-chevron {
+  transform: rotate(-90deg);
+}

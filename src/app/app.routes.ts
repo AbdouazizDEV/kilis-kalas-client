@@ -74,6 +74,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/profile/profile.routes').then((m) => m.PROFILE_ROUTES),
   },
   {
+    path: 'help',
+    loadChildren: () => import('./features/help/help.routes').then((m) => m.HELP_ROUTES),
+  },
+  {
     path: '**',
     redirectTo: 'onboarding/splash',
   },

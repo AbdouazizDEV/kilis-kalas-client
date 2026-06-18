@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true" class="home">
   <ion-grid class="home__layout">
     <ion-row class="home__header-row">
-      <ion-col size="12" class="home__header-col">
+      <ion-col size="3" class="home__header-col home__header-col--menu">
         <ion-button
           type="button"
           fill="clear"
@@ -11,9 +11,11 @@
         >
           <ion-icon name="menu-outline" class="home__menu-icon"></ion-icon>
         </ion-button>
+      </ion-col>
 
+      <ion-col size="6" class="home__header-col home__header-col--brand">
         <ion-grid class="home__brand">
-          <ion-row class="home__brand-row ion-align-items-center">
+          <ion-row class="home__brand-row ion-align-items-center ion-justify-content-center">
             <ion-col size="auto" class="home__brand-text-col">
               <ion-text class="home__brand-name">{{ 'HOME.BRAND' | translate }}</ion-text>
             </ion-col>
@@ -27,11 +29,14 @@
           </ion-row>
         </ion-grid>
       </ion-col>
+
+      <ion-col size="3" class="home__header-col home__header-col--spacer" aria-hidden="true"></ion-col>
     </ion-row>
 
-    <ion-row class="home__title-row">
-      <ion-col size="12" class="home__title-col">
+    <ion-row class="home__hero-row">
+      <ion-col size="12" class="home__hero-col">
         <ion-text class="home__title">{{ 'HOME.TITLE' | translate }}</ion-text>
+        <ion-text class="home__subtitle">{{ 'HOME.SUBTITLE' | translate }}</ion-text>
       </ion-col>
     </ion-row>
 
@@ -44,10 +49,21 @@
           class="home__search-bar"
           (click)="onChooseDestination()"
         >
-          <ion-icon name="location-outline" class="home__search-icon"></ion-icon>
-          <ion-text class="home__search-placeholder">{{
-            'HOME.SEARCH_PLACEHOLDER' | translate
-          }}</ion-text>
+          <ion-grid class="home__search-inner">
+            <ion-row class="ion-align-items-center">
+              <ion-col size="auto" class="home__search-icon-col">
+                <ion-img src="assets/icon/pin-location.svg" alt="" class="home__search-icon"></ion-img>
+              </ion-col>
+              <ion-col class="home__search-text-col">
+                <ion-text class="home__search-placeholder">{{
+                  'HOME.SEARCH_PLACEHOLDER' | translate
+                }}</ion-text>
+              </ion-col>
+              <ion-col size="auto" class="home__search-chevron-col">
+                <ion-icon name="chevron-forward-outline" class="home__search-chevron"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-button>
       </ion-col>
     </ion-row>
@@ -66,11 +82,13 @@
               <ion-button
                 type="button"
                 fill="clear"
-                expand="block"
                 class="home__map-action-btn"
                 (click)="onDefineOnMap()"
               >
-                {{ 'HOME.DEFINE_ON_MAP' | translate }}
+                <ion-icon name="map-outline" class="home__map-action-icon"></ion-icon>
+                <ion-text class="home__map-action-label">{{
+                  'HOME.DEFINE_ON_MAP' | translate
+                }}</ion-text>
               </ion-button>
             </ion-col>
           </ion-row>
@@ -80,40 +98,68 @@
 
     <ion-row class="home__options-row">
       <ion-col size="12" class="home__options-col">
-        <div class="home__options-grid">
-          <ion-button
-            type="button"
-            fill="clear"
-            class="home__option-card"
-            (click)="onDelivery()"
-          >
-            <div class="home__option-content">
-              <ion-img
-                src="assets/icon/Motorcycle.svg"
-                alt=""
-                class="home__option-icon home__option-icon--delivery"
-              ></ion-img>
-              <ion-text class="home__option-label">{{ 'HOME.DELIVERY' | translate }}</ion-text>
-            </div>
-          </ion-button>
+        <ion-text class="home__section-label">{{ 'HOME.QUICK_ACTIONS' | translate }}</ion-text>
 
-          <ion-button
-            type="button"
-            fill="clear"
-            class="home__option-card"
-            (click)="onOrder()"
-          >
-            <div class="home__option-content">
-              <ion-img
-                src="assets/icon/noto_package.svg"
-                alt=""
-                class="home__option-icon home__option-icon--order"
-              ></ion-img>
-              <ion-text class="home__option-label">{{ 'HOME.ORDER' | translate }}</ion-text>
-            </div>
-          </ion-button>
-        </div>
+        <ion-grid class="home__options-grid">
+          <ion-row>
+            <ion-col size="6" class="home__option-col">
+              <ion-button
+                type="button"
+                fill="clear"
+                expand="block"
+                class="home__option-card"
+                (click)="onDelivery()"
+              >
+                <ion-grid class="home__option-content">
+                  <ion-row class="ion-align-items-center ion-justify-content-center">
+                    <ion-col size="12" class="home__option-icon-col">
+                      <ion-img
+                        src="assets/icon/Motorcycle.svg"
+                        alt=""
+                        class="home__option-icon home__option-icon--delivery"
+                      ></ion-img>
+                    </ion-col>
+                    <ion-col size="12">
+                      <ion-text class="home__option-label">{{ 'HOME.DELIVERY' | translate }}</ion-text>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-button>
+            </ion-col>
+
+            <ion-col size="6" class="home__option-col">
+              <ion-button
+                type="button"
+                fill="clear"
+                expand="block"
+                class="home__option-card"
+                (click)="onOrder()"
+              >
+                <ion-grid class="home__option-content">
+                  <ion-row class="ion-align-items-center ion-justify-content-center">
+                    <ion-col size="12" class="home__option-icon-col">
+                      <ion-img
+                        src="assets/icon/noto_package.svg"
+                        alt=""
+                        class="home__option-icon home__option-icon--order"
+                      ></ion-img>
+                    </ion-col>
+                    <ion-col size="12">
+                      <ion-text class="home__option-label">{{ 'HOME.ORDER' | translate }}</ion-text>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<app-side-menu
+  [isOpen]="isMenuOpen"
+  (closed)="closeMenu()"
+  (menuAction)="onMenuAction($event)"
+></app-side-menu>

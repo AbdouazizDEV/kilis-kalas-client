@@ -8,10 +8,10 @@ export class UserRepository implements IUserRepository {
   getProfile(userId: string): Observable<User> {
     return of({
       id: userId,
-      firstName: 'Amadou',
-      lastName: 'Diallo',
-      phone: '+221771234567',
-      email: 'amadou@example.sn',
+      firstName: 'Babacar',
+      lastName: 'Nguirane',
+      phone: '+221 77 378 29 56',
+      email: 'nguiranebabacar305@gmail.com',
       createdAt: new Date(),
     }).pipe(delay(300));
   }
@@ -19,9 +19,9 @@ export class UserRepository implements IUserRepository {
   updateProfile(userId: string, data: UserProfileUpdate): Observable<User> {
     return of({
       id: userId,
-      firstName: data.firstName ?? 'Amadou',
-      lastName: data.lastName ?? 'Diallo',
-      phone: data.phone ?? '+221771234567',
+      firstName: data.firstName ?? 'Babacar',
+      lastName: data.lastName ?? 'Nguirane',
+      phone: data.phone ?? '+221 77 378 29 56',
       email: data.email,
       avatarUrl: data.avatarUrl,
       createdAt: new Date(),

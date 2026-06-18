@@ -1,12 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IonCol, IonGrid, IonIcon, IonRow, IonText } from '@ionic/angular/standalone';
+import {
+  IonButton,
+  IonCol,
+  IonGrid,
+  IonImg,
+  IonInput,
+  IonItem,
+  IonRow,
+  IonText,
+} from '@ionic/angular/standalone';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LocationSelection, RouteField } from '../../../../models/location.model';
 
 @Component({
   selector: 'app-route-location-card',
   standalone: true,
-  imports: [IonGrid, IonRow, IonCol, IonIcon, IonText, TranslatePipe],
+  imports: [IonGrid, IonRow, IonCol, IonImg, IonText, IonButton, IonItem, IonInput, TranslatePipe],
   templateUrl: './route-location-card.component.html',
   styleUrls: ['./route-location-card.component.scss'],
 })
@@ -23,8 +32,8 @@ export class RouteLocationCardComponent {
     this.fieldFocus.emit(field);
   }
 
-  onDestinationInput(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
+  onDestinationInput(event: CustomEvent): void {
+    const value = (event.detail as { value?: string }).value ?? '';
     this.destinationQueryChange.emit(value);
   }
 }

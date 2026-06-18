@@ -55,11 +55,14 @@
   "COMMON": {
     "LOADING": "Chargement...",
     "CONTINUE": "Continuer",
-    "LOGIN": "Se connecter"
+    "LOGIN": "Se connecter",
+    "BACK": "Retour"
   },
   "HOME": {
     "BRAND": "Kilis Kalas",
     "TITLE": "Prêt pour votre prochain trajet ?",
+    "SUBTITLE": "Course ou livraison, en quelques secondes.",
+    "QUICK_ACTIONS": "Accès rapide",
     "SEARCH_PLACEHOLDER": "Choisir une destination",
     "DEFINE_ON_MAP": "Définir sur la carte",
     "MAP_API_KEY_MISSING": "Carte Google Maps disponible dès l'ajout de la clé API.",
@@ -67,14 +70,25 @@
     "DELIVERY": "Livraison",
     "ORDER": "Commander"
   },
+  "SIDE_MENU": {
+    "CLOSE": "Fermer le menu",
+    "PROFILE": "Mon Profil",
+    "HISTORY": "Historique",
+    "PAYMENT": "Paiement",
+    "DRIVER_MODE": "Mode chauffeur",
+    "HELP": "Aide et assistance",
+    "LOGOUT": "Se déconnecter"
+  },
   "RIDE_BOOKING": {
     "TITLE": "Votre prochain trajet",
+    "SUBTITLE": "Où souhaitez-vous aller aujourd'hui ?",
     "SEARCH_PLACEHOLDER": "Choisir une destination",
     "CHOOSE_PICKUP": "Choisir une position",
     "CURRENT_POSITION": "Ma position Actuelle",
     "SHARE_CURRENT_POSITION": "Partager ma position actuelle",
     "SEARCH_RESULTS": "Résultat de recherche",
     "CHOOSE_DESTINATION": "Choisir ta destination",
+    "DESTINATION": "Destination",
     "SELECTED_ON_MAP": "Position sur la carte",
     "VALIDATE": "Valider",
     "SEARCHING": "Recherche en cours…",
@@ -114,6 +128,7 @@
   },
   "RIDE_HISTORY": {
     "TITLE": "Historique",
+    "DETAIL_TITLE": "Détails de la course",
     "DURATION": "Durée",
     "DISTANCE": "Distance",
     "OFFER_TYPE": "Type d'offre",
@@ -121,5 +136,28 @@
     "PAYMENT_METHOD": "Mode de paiement",
     "ORDER_STATUS": "Statut de la commande",
     "STATUS_SUCCESS": "Réussi"
+  },
+  "PROFILE": {
+    "TITLE": "Mon Profil",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom",
+    "EMAIL": "Email",
+    "PHONE": "Téléphone",
+    "SAVE": "Sauvegarder les changements",
+    "EDIT_AVATAR": "Modifier la photo de profil"
+  },
+  "HELP": {
+    "TITLE": "Aide et assistance",
+    "FAQ_TAB": "FAQ",
+    "CONTACT_TAB": "Contact",
+    "CONTACT_INTRO": "Notre équipe est disponible pour vous aider.",
+    "CONTACT_PHONE": "+221 33 000 00 00",
+    "CONTACT_EMAIL": "support@kiliskalas.sn",
+    "FAQ_ORDER_QUESTION": "Comment faire une commande",
+    "FAQ_ORDER_ANSWER": "Choisissez votre destination sur l'écran d'accueil, sélectionnez un véhicule puis validez votre course.",
+    "FAQ_PAYMENT_QUESTION": "Quels moyens de paiement sont acceptés ?",
+    "FAQ_PAYMENT_ANSWER": "Vous pouvez payer en espèces, via Wave ou Orange Money.",
+    "FAQ_CANCEL_QUESTION": "Comment annuler une course ?",
+    "FAQ_CANCEL_ANSWER": "Depuis l'écran de suivi, utilisez le bouton d'annulation avant l'arrivée du chauffeur."
   }
 }

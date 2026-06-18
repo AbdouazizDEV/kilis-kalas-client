@@ -1,10 +1,20 @@
-<button
+<ion-button
   type="button"
+  fill="clear"
+  expand="block"
   class="payment-method-option"
   [class.payment-method-option--selected]="selected"
   (click)="onSelect()"
 >
-  <span class="payment-method-option__radio" aria-hidden="true"></span>
-  <ion-text class="payment-method-option__label">{{ label }}</ion-text>
-  <ion-img [src]="iconSrc" alt="" class="payment-method-option__icon"></ion-img>
-</button>
+  <ion-grid class="payment-method-option__layout">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto" class="payment-method-option__radio-col" aria-hidden="true"></ion-col>
+      <ion-col class="payment-method-option__label-col">
+        <ion-text class="payment-method-option__label">{{ label }}</ion-text>
+      </ion-col>
+      <ion-col size="auto" class="payment-method-option__icon-col">
+        <ion-img [src]="iconSrc" alt="" class="payment-method-option__icon"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-button>

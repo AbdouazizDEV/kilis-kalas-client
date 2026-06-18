@@ -12,8 +12,17 @@ import {
 } from '@ionic/angular/standalone';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AppMapPreviewComponent } from '../../../../shared/ui-kit/app-map-preview/app-map-preview.component';
+import {
+  AppSideMenuComponent,
+  SideMenuAction,
+} from '../../../../shared/ui-kit/app-side-menu/app-side-menu.component';
 import { addIcons } from 'ionicons';
-import { locationOutline, menuOutline } from 'ionicons/icons';
+import {
+  chevronForwardOutline,
+  locationOutline,
+  mapOutline,
+  menuOutline,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +38,7 @@ import { locationOutline, menuOutline } from 'ionicons/icons';
     IonText,
     TranslatePipe,
     AppMapPreviewComponent,
+    AppSideMenuComponent,
   ],
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
@@ -36,12 +46,42 @@ import { locationOutline, menuOutline } from 'ionicons/icons';
 export class HomePage {
   private readonly router = inject(Router);
 
+  isMenuOpen = false;
+
   constructor() {
-    addIcons({ menuOutline, locationOutline });
+    addIcons({ menuOutline, locationOutline, chevronForwardOutline, mapOutline });
   }
 
   onMenu(): void {
-    void this.router.navigateByUrl('/profile');
+    this.isMenuOpen = true;
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+  }
+
+  onMenuAction(action: SideMenuAction): void {
+    this.closeMenu();
+
+    switch (action) {
+      case 'profile':
+        void this.router.navigateByUrl('/profile');
+        break;
+      case 'history':
+        void this.router.navigateByUrl('/ride-history');
+        break;
+      case 'payment':
+        void this.router.navigateByUrl('/payment');
+        break;
+      case 'help':
+        void this.router.navigateByUrl('/help');
+        break;
+      case 'logout':
+        void this.router.navigateByUrl('/auth/login');
+        break;
+      default:
+        break;
+    }
   }
 
   onChooseDestination(): void {

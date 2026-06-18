@@ -156,7 +156,7 @@ export class RideTrackingPage implements OnInit, OnDestroy {
   }
 
   onViewDetails(): void {
-    void this.router.navigateByUrl('/ride-history');
+    void this.router.navigateByUrl('/ride-history/detail');
   }
 
   onRatingChange(value: number): void {

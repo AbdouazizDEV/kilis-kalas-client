@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IonImg, IonText } from '@ionic/angular/standalone';
+import { IonButton, IonCol, IonGrid, IonImg, IonRow, IonText } from '@ionic/angular/standalone';
 import { TranslatePipe } from '@ngx-translate/core';
 import { VehicleType } from '../../../models/ride.model';
 
 @Component({
   selector: 'app-vehicle-option-card',
   standalone: true,
-  imports: [IonImg, IonText, TranslatePipe],
+  imports: [IonButton, IonGrid, IonRow, IonCol, IonImg, IonText, TranslatePipe],
   templateUrl: './app-vehicle-option-card.component.html',
   styleUrls: ['./app-vehicle-option-card.component.scss'],
 })

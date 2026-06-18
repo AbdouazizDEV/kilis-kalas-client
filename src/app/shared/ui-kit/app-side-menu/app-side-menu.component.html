@@ -1,0 +1,122 @@
+@if (isOpen) {
+  <ion-grid
+    class="side-menu__backdrop side-menu__backdrop--visible"
+    (click)="onBackdropClick()"
+    aria-hidden="true"
+  ></ion-grid>
+} @else {
+  <ion-grid class="side-menu__backdrop" aria-hidden="true"></ion-grid>
+}
+
+<ion-content
+  class="side-menu__panel"
+  [class.side-menu__panel--open]="isOpen"
+  [scrollY]="true"
+  role="dialog"
+  [attr.aria-hidden]="!isOpen"
+  aria-modal="true"
+>
+  <ion-grid class="side-menu__layout">
+    <ion-row class="side-menu__hero-row">
+      <ion-col size="12" class="side-menu__hero-col">
+        <ion-grid class="side-menu__hero">
+          <ion-row>
+            <ion-col size="12" class="side-menu__hero-top">
+              <ion-button
+                type="button"
+                fill="clear"
+                class="side-menu__close-btn"
+                [attr.aria-label]="closeLabel()"
+                (click)="onClose()"
+              >
+                <ion-img src="assets/icon/flesh.svg" alt="" class="side-menu__close-icon"></ion-img>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="side-menu__profile-row">
+      <ion-col size="12" class="side-menu__profile-col">
+        <app-avatar [name]="userName" [src]="avatarSrc" size="lg" class="side-menu__avatar"></app-avatar>
+        <ion-text class="side-menu__user-name">{{ userName }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="side-menu__menu-row">
+      <ion-col size="12">
+        <ion-list class="side-menu__card" lines="none">
+          <ion-item
+            button
+            detail="false"
+            class="side-menu__item"
+            lines="none"
+            (click)="onItem('profile')"
+          >
+            <ion-img slot="start" src="assets/icons/solar_user-linear.svg" alt="" class="side-menu__item-icon"></ion-img>
+            <ion-label class="side-menu__item-label">{{ profileLabel() }}</ion-label>
+          </ion-item>
+
+          <ion-item
+            button
+            detail="false"
+            class="side-menu__item"
+            lines="none"
+            (click)="onItem('history')"
+          >
+            <ion-img slot="start" src="assets/icons/hugeicons_pin-location-01.svg" alt="" class="side-menu__item-icon"></ion-img>
+            <ion-label class="side-menu__item-label">{{ historyLabel() }}</ion-label>
+          </ion-item>
+
+          <ion-item
+            button
+            detail="false"
+            class="side-menu__item"
+            lines="none"
+            (click)="onItem('payment')"
+          >
+            <ion-img slot="start" src="assets/icons/solar_card-linear.svg" alt="" class="side-menu__item-icon"></ion-img>
+            <ion-label class="side-menu__item-label">{{ paymentLabel() }}</ion-label>
+          </ion-item>
+
+          <ion-item
+            button
+            detail="false"
+            class="side-menu__item"
+            lines="none"
+            (click)="onItem('driver-mode')"
+          >
+            <ion-img slot="start" src="assets/icons/uil_car.svg" alt="" class="side-menu__item-icon"></ion-img>
+            <ion-label class="side-menu__item-label">{{ driverModeLabel() }}</ion-label>
+          </ion-item>
+
+          <ion-item
+            button
+            detail="false"
+            class="side-menu__item side-menu__item--last"
+            lines="none"
+            (click)="onItem('help')"
+          >
+            <ion-img
+              slot="start"
+              src="assets/icons/material-symbols_help-outline-rounded.svg"
+              alt=""
+              class="side-menu__item-icon"
+            ></ion-img>
+            <ion-label class="side-menu__item-label">{{ helpLabel() }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="side-menu__logout-row">
+      <ion-col size="12">
+        <ion-button type="button" fill="clear" expand="block" class="side-menu__logout-btn" (click)="onItem('logout')">
+          <ion-img src="assets/icons/iconoir_log-in.svg" alt="" class="side-menu__logout-icon"></ion-img>
+          <ion-text class="side-menu__logout-label">{{ logoutLabel() }}</ion-text>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

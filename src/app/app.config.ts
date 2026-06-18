@@ -1,5 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 import { provideRouter, RouteReuseStrategy } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 import { IonicStorageModule } from '@ionic/storage-angular';
@@ -17,6 +19,10 @@ import { PaymentService } from './services/payment/payment.service';
 import { RideRepository } from './services/ride/ride.repository';
 import { UserRepository } from './services/user/user.repository';
 
+function preloadTranslations(translate: TranslateService): () => Promise<unknown> {
+  return () => firstValueFrom(translate.use('fr'));
+}
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideIonicAngular(),
@@ -32,6 +38,12 @@ export const appConfig: ApplicationConfig = {
       lang: 'fr',
       fallbackLang: 'fr',
     }),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: preloadTranslations,
+      deps: [TranslateService],
+      multi: true,
+    },
     { provide: AUTH_SERVICE, useClass: AuthService },
     { provide: RIDE_REPOSITORY, useClass: RideRepository },
     { provide: USER_REPOSITORY, useClass: UserRepository },

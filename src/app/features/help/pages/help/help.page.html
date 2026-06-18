@@ -1,0 +1,73 @@
+<ion-content [fullscreen]="true" class="help">
+  <ion-grid class="help__layout">
+    <ion-row class="help__header-row">
+      <ion-col size="12" class="help__header-col">
+        <app-back-button defaultHref="/home" class="help__back-btn"></app-back-button>
+        <ion-text class="help__title">{{ titleLabel() }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="help__tabs-row">
+      <ion-col size="12" class="help__tabs-col">
+        <ion-segment
+          class="help__segment"
+          [value]="activeTab"
+          (ionChange)="onTabChange($event)"
+        >
+          <ion-segment-button value="faq" class="help__segment-btn">
+            <ion-label>{{ faqTabLabel() }}</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="contact" class="help__segment-btn">
+            <ion-label>{{ contactTabLabel() }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+
+    @if (activeTab === 'faq') {
+      <ion-row class="help__content-row">
+        <ion-col size="12">
+          <ion-accordion-group class="help__accordion-group">
+            @for (item of faqItems; track item.id) {
+              <ion-accordion class="help__accordion" [value]="item.id">
+                <ion-item slot="header" class="help__faq-header" lines="none">
+                  <ion-label class="help__faq-question">{{ questionLabel(item.questionKey)() }}</ion-label>
+                  <ion-icon slot="end" name="chevron-down-outline" class="help__faq-chevron"></ion-icon>
+                </ion-item>
+                <ion-grid slot="content" class="help__faq-content">
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-text class="help__faq-answer">{{ answerLabel(item.answerKey)() }}</ion-text>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-accordion>
+            }
+          </ion-accordion-group>
+        </ion-col>
+      </ion-row>
+    } @else {
+      <ion-row class="help__content-row">
+        <ion-col size="12">
+          <ion-grid class="help__contact-card">
+            <ion-row>
+              <ion-col size="12">
+                <ion-text class="help__contact-intro">{{ contactIntroLabel() }}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <ion-text class="help__contact-line">{{ contactPhoneLabel() }}</ion-text>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12">
+                <ion-text class="help__contact-line">{{ contactEmailLabel() }}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    }
+  </ion-grid>
+</ion-content>

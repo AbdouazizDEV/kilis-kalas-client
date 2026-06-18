@@ -15,39 +15,63 @@
   }
 
   &__track {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    min-height: 4.5rem;
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
+    width: 1rem;
+    padding: 0;
   }
 
-  &__pickup-dot {
+  &__track-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4.5rem;
+    gap: 0.125rem;
+  }
+
+  &__pickup-dot-col {
     position: relative;
-    width: 1rem;
-    height: 1rem;
+    flex: 0 0 auto;
+    width: 0.75rem !important;
+    max-width: 0.75rem;
+    height: 0.75rem !important;
+    padding: 0;
     border-radius: 50%;
-    background: rgba(191, 113, 253, 0.2);
+    background: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 
     &::after {
       content: '';
       position: absolute;
-      inset: 20%;
+      inset: 28%;
       border-radius: 50%;
-      background: #bf71fd;
+      background: var(--kk-brand-green, #10b981);
     }
   }
 
-  &__connector {
+  &__connector-col {
     flex: 1 1 auto;
-    width: 0;
+    width: 0 !important;
+    max-width: 0;
     min-height: 1.25rem;
+    padding: 0;
     border-left: 1px dashed rgba(0, 0, 0, 0.35);
+    margin: 0 auto;
+  }
+
+  &__destination-icon-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 0;
   }
 
   &__destination-icon {
-    font-size: 1.125rem;
-    color: #09420b;
+    width: 1.125rem;
+    height: 1.125rem;
+    object-fit: contain;
+    display: block;
   }
 
   &__labels-col {
@@ -60,12 +84,11 @@
   }
 
   &__line {
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
+    width: 100%;
   }
 
   &__label {
+    display: block;
     font-family: var(--kk-font-body);
     font-weight: 400;
     font-size: 0.8125rem;
@@ -74,6 +97,7 @@
   }
 
   &__value {
+    display: block;
     font-family: var(--kk-font-body);
     font-weight: 500;
     font-size: 0.9375rem;

@@ -1,19 +1,20 @@
-// Référence maquette : 335 × 112 — %
 .route-location-card {
   --ion-grid-padding: 0;
   --ion-grid-column-padding: 0;
   width: 100%;
   padding: 0;
-  background: #eeeded;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
   border-radius: 1.25rem;
+  box-shadow: 0 0.5rem 2rem rgba(15, 23, 42, 0.08);
   overflow: hidden;
 
   &__row {
     flex-wrap: nowrap;
     align-items: stretch;
-    min-height: 7rem;
-    padding: 0.9375rem 1.125rem;
-    gap: 0.75rem;
+    min-height: 7.5rem;
+    padding: 1rem 1.125rem;
+    gap: 0.875rem;
   }
 
   &__track-col {
@@ -22,121 +23,174 @@
   }
 
   &__track {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
+    --ion-grid-padding: 0;
+    --ion-grid-column-padding: 0;
     width: 1.25rem;
     min-width: 20px;
     height: 100%;
-    min-height: 5.5rem;
+    min-height: 5.75rem;
+    padding: 0;
   }
 
-  &__pickup-dot {
+  &__track-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 5.75rem;
+    gap: 0.125rem;
+  }
+
+  &__pickup-dot-col {
     position: relative;
-    flex-shrink: 0;
-    width: 1.25rem;
-    height: 1.25rem;
+    flex: 0 0 auto;
+    width: 0.875rem !important;
+    max-width: 0.875rem;
+    height: 0.875rem !important;
+    padding: 0;
     border-radius: 50%;
-    background: rgba(16, 185, 129, 0.15);
+    background: rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
 
     &::after {
       content: '';
       position: absolute;
-      inset: 14%;
+      inset: 28%;
       border-radius: 50%;
-      background: #bf71fd;
+      background: var(--kk-brand-green, #10b981);
     }
   }
 
-  &__connector {
+  &__connector-col {
     flex: 1 1 auto;
-    width: 0;
+    width: 0 !important;
+    max-width: 0;
     min-height: 1.5rem;
-    border-left: 1px dashed rgba(0, 0, 0, 0.49);
+    padding: 0;
+    border-left: 1.5px dashed rgba(15, 23, 42, 0.22);
+    margin: 0 auto;
+  }
+
+  &__destination-icon-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 0;
   }
 
   &__destination-icon {
-    flex-shrink: 0;
-    font-size: 1.375rem;
-    color: #09420b;
+    width: 1.25rem;
+    height: 1.25rem;
+    object-fit: contain;
+    display: block;
   }
 
   &__fields-col {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 0.625rem;
     min-width: 0;
     padding: 0;
   }
 
   &__field {
-    display: flex;
-    align-items: center;
+    --background: #f8faf9;
+    --background-hover: #f1f5f4;
+    --background-activated: #e8eeec;
+    --box-shadow: none;
+    --ripple-color: rgba(16, 185, 129, 0.12);
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --border-radius: 62.5rem;
     width: 100%;
-    min-height: 2.75rem;
-    padding: 0 1rem;
-    border: 0;
-    border-radius: 724.9375rem;
-    background: #f9f9f9;
-    text-align: left;
-    cursor: pointer;
+    min-height: 2.875rem;
+    margin: 0;
+    border: 1px solid rgba(15, 23, 42, 0.05);
+    text-transform: none;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
 
     &--destination {
       position: relative;
     }
 
     &--active {
-      background: rgba(16, 185, 129, 0.1);
+      --background: rgba(16, 185, 129, 0.08);
+      --background-hover: rgba(16, 185, 129, 0.1);
+      --background-activated: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
     }
+
+    &::part(native) {
+      justify-content: flex-start;
+      border-radius: 62.5rem;
+    }
+  }
+
+  ion-item.route-location-card__field {
+    --background: rgba(16, 185, 129, 0.08);
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --inner-padding-end: 0;
+    --min-height: 2.875rem;
+    width: 100%;
+    min-height: 2.875rem;
+    margin: 0;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 62.5rem;
   }
 
   &__field-text {
     font-family: var(--kk-font-body);
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     line-height: 1.3;
-    color: rgba(0, 0, 0, 0.49);
+    color: rgba(15, 23, 42, 0.45);
+    text-align: left;
   }
 
   &__field-text--filled {
-    color: #000000;
+    font-weight: 500;
+    color: #0f172a;
   }
 
   &__field--active .route-location-card__field-text,
   &__field--active .route-location-card__input {
-    color: #000000;
+    color: #0f172a;
   }
 
   &__input {
-    width: 100%;
-    border: 0;
-    outline: none;
-    background: transparent;
+    --padding-start: 0.75rem;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --placeholder-color: rgba(15, 23, 42, 0.45);
+    --placeholder-opacity: 1;
     font-family: var(--kk-font-body);
-    font-weight: 400;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
     line-height: 1.3;
-    color: #000000;
-
-    &::placeholder {
-      color: rgba(0, 0, 0, 0.49);
-    }
+    color: #0f172a;
   }
 
   &__cursor {
     position: absolute;
     left: 0.875rem;
+    z-index: 1;
     font-family: var(--kk-font-body);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     line-height: 1.3;
-    color: #10b981;
+    color: var(--kk-brand-green, #10b981);
+    animation: rlc-cursor-blink 1s step-end infinite;
   }
+}
 
-  &__field--active &__input {
-    padding-left: 0.75rem;
+@keyframes rlc-cursor-blink {
+  50% {
+    opacity: 0;
   }
 }

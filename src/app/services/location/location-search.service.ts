@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, from, of } from 'rxjs';
+import { Observable, from, of, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import {
   DIOURBEL_FALLBACK_PLACES,
@@ -38,18 +38,18 @@ export class LocationSearchService {
   resolvePlace(place: LocationPlace): Observable<LocationPlace> {
     if (place.latitude != null && place.longitude != null) {
       if (!isWithinDiourbelRegion(place.latitude, place.longitude)) {
-        throw new Error('OUT_OF_REGION');
+        return throwError(() => new Error('OUT_OF_REGION'));
       }
 
       return of(place);
     }
 
     if (!place.placeId) {
-      throw new Error('INVALID_PLACE');
+      return throwError(() => new Error('INVALID_PLACE'));
     }
 
     if (!this.mapsLoader.isApiKeyConfigured()) {
-      throw new Error('INVALID_PLACE');
+      return throwError(() => new Error('INVALID_PLACE'));
     }
 
     return from(this.mapsLoader.load()).pipe(
